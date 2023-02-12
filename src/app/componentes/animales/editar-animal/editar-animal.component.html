@@ -1,0 +1,33 @@
+
+<div class=""col-md-6 offset-md-3>
+    <h3 class="text-center">Editar un animal</h3>
+    <form (ngSubmit)="onSubmit()" [formGroup]="animalesForm"><br>
+      <div class="form-group">
+        <label>Nombre: </label>
+        <input type="text" [(ngModel)]="animal.nombre" name="nombre" id="nombre" formControlName="nombre" class="form-control">
+      </div><br>
+      <div class="form-group">
+        <label>Edad: </label>
+        <input type="number" [(ngModel)]="animal.edad" name="edad" id="edad" formControlName="edad" class="form-control">
+      </div><br>
+      <div class="form-group">
+        <label>Raza: </label>
+        <input type="text" [(ngModel)]="animal.raza" name="raza" id="raza" formControlName="raza" class="form-control">
+      </div><br>
+       <div class="form-group">
+        <label>Descripción</label>
+        <input type="text"[(ngModel)]="animal.descripcion" name="descripcion" id="descripcion"  formControlName="descripcion" class="form-control">
+      </div><br>
+      <div class="form-group">
+        <label>Imagen</label>
+        <input type="text" [(ngModel)]="animal.imagen" name="imagen" id="imagen" formControlName="imagen" class="form-control">
+      </div><br>
+      <div class="form-group">
+        <label>Tipo</label>
+        <input type="text"[(ngModel)]="animal.tipo" name="tipo" id="tipo" formControlName="tipo" class="form-control">
+      </div><br>
+      <button type="submit" class="btn btn-success" [disabled]="animalesForm.invalid" (click)="guardarAnimal(animal)" >Guardar</button>
+    </form>
+  </div><br>
+  
+  
