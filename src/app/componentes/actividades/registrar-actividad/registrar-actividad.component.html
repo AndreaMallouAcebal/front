@@ -1,0 +1,19 @@
+
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center">Registrar un animal</h3>
+    <form (ngSubmit)="onSubmit()" [formGroup]="actividadesForm"><br>
+      <div class="form-group">
+        <label>Nombre: </label>
+        <input type="text" [(ngModel)]="actividad.nombre" name="nombre" id="nombre" formControlName="nombre" class="form-control">
+      </div><br>
+      <div class="form-group">
+        <label>Fecha: </label>
+        <input type="date" [(ngModel)]="actividad.fecha" name="fecha" id="fecha" formControlName="fecha" class="form-control">
+      </div><br>
+       <div class="form-group">
+        <label>Descripción</label>
+        <input type="text"[(ngModel)]="actividad.descripcion" name="descripcion" id="descripcion"  formControlName="descripcion" class="form-control">
+      </div><br>
+      <button type="submit" class="btn btn-success" [disabled]="actividadesForm.invalid">Guardar</button>
+    </form>
+  </div><br>

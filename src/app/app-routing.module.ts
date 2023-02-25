@@ -1,23 +1,99 @@
 import { registerLocaleData } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EditarActividadComponent } from './componentes/actividades/editar-actividad/editar-actividad.component';
+import { ListarActividadesComponent } from './componentes/actividades/listar-actividades/listar-actividades.component';
+import { RegistrarActividadComponent } from './componentes/actividades/registrar-actividad/registrar-actividad.component';
 import { EditarAnimalComponent } from './componentes/animales/editar-animal/editar-animal.component';
 import { ListarAnimalesComponent } from './componentes/animales/listar-animales/listar-animales.component';
 import { RegistrarAnimalComponent } from './componentes/animales/registrar-animal/registrar-animal.component';
+import { EditarCitaComponent } from './componentes/citas/editar-cita/editar-cita.component';
+import { ListarCitasComponent } from './componentes/citas/listar-citas/listar-citas.component';
+import { RegistrarCitaComponent } from './componentes/citas/registrar-cita/registrar-cita.component';
+import { InicioComponent } from './componentes/inicio/inicio.component';
+import { EditarPatrocinadorComponent } from './componentes/patrocinadores/editar-patrocinador/editar-patrocinador.component';
+import { ListarPatrocinadoresComponent } from './componentes/patrocinadores/listar-patrocinadores/listar-patrocinadores.component';
+import { RegistrarPatrocinadorComponent } from './componentes/patrocinadores/registrar-patrocinador/registrar-patrocinador.component';
+import { EditarRolComponent } from './componentes/roles/editar-rol/editar-rol.component';
+import { ListarRolesComponent } from './componentes/roles/listar-roles/listar-roles.component';
+import { RegistrarRolComponent } from './componentes/roles/registrar-rol/registrar-rol.component';
+import { EditarUsuarioComponent } from './componentes/usuarios/editar-usuario/editar-usuario.component';
+import { ListarUsuariosComponent } from './componentes/usuarios/listar-usuarios/listar-usuarios.component';
+import { RegistrarUsuarioComponent } from './componentes/usuarios/registrar-usuario/registrar-usuario.component';
+import { EditarVoluntarioComponent } from './componentes/voluntarios/editar-voluntario/editar-voluntario.component';
+import { ListarVoluntariosComponent } from './componentes/voluntarios/listar-voluntarios/listar-voluntarios.component';
+import { RegistrarVoluntarioComponent } from './componentes/voluntarios/registrar-voluntario/registrar-voluntario.component';
 
 
 const routes: Routes = [
   {
-    path: 'animales', component: ListarAnimalesComponent
+    path: 'inicio', component: InicioComponent
   },
-{
-    path: '', redirectTo:'animales', pathMatch:'full'
+  {
+    path: '', redirectTo:'inicio', pathMatch:'full'
+  },
+  {
+    path: 'animales', component: ListarAnimalesComponent
   },
   {
     path: 'registrar-animal', component: RegistrarAnimalComponent
   },
   {
     path: 'animales/:id', component: EditarAnimalComponent
+  },
+  {
+    path: 'citas', component: ListarCitasComponent
+  },
+  {
+    path: 'registrar-cita', component: RegistrarCitaComponent
+  },
+  {
+    path: 'citas/:id', component: EditarCitaComponent
+  },
+  {
+    path: 'usuarios', component: ListarUsuariosComponent
+  },
+  {
+    path: 'registrar-usuario', component: RegistrarUsuarioComponent
+  },
+  {
+    path: 'usuarios/:id', component: EditarUsuarioComponent
+  },
+  {
+    path: 'roles', component: ListarRolesComponent
+  },
+  {
+    path: 'registrar-rol', component: RegistrarRolComponent
+  },
+  {
+    path: 'roles/:id', component: EditarRolComponent
+  },
+  {
+    path: 'voluntarios', component: ListarVoluntariosComponent
+  },
+  {
+    path: 'registrar-voluntario', component: RegistrarVoluntarioComponent
+  },
+  {
+    path: 'voluntarios/:id', component: EditarVoluntarioComponent
+  },
+  {
+    path: 'patrocinadores', component: ListarPatrocinadoresComponent
+  },
+  {
+    path: 'registrar-patrocinador', component: RegistrarPatrocinadorComponent
+  },
+  {
+    path: 'patrocinadores/:id', component: EditarPatrocinadorComponent
+  },
+  {
+    path: 'actividades', component: ListarActividadesComponent
+  },
+  {
+    path: 'registrar-actividad', component: RegistrarActividadComponent
+  },
+  {
+    path: 'actividades/:id', component: EditarActividadComponent
   },
 
 ];

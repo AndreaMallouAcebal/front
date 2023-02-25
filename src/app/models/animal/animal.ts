@@ -1,5 +1,6 @@
+
 export class Animal {
-    idanimal: number;
+    id: number;
     nombre:string;
     edad:number;
     raza:string;

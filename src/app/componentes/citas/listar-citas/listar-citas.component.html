@@ -1,0 +1,27 @@
+<h2>Lista citas</h2>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+          <th>Id</th>
+          <th>fecha</th>
+          <th>Nombre del Animal</th>
+          <th>Nombre del Usuario</th>
+          <th>Acciones</th>
+        </tr>
+    </thead>
+      <tbody class="table-dark">
+        <tr *ngFor="let cita of citas">
+          <td>{{cita.id}}</td>
+          <td>{{cita.fecha}}</td>
+          <td>{{cita.animal.nombre}}</td>
+          <td>{{cita.usuario.nombre}}</td>
+          <td>
+            <button type="button" routerLink="{{cita.id}}" class="btn btn-success" >Editar</button>
+            <button type="button" class="btn btn-danger" (click)="onClickEliminar(cita.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+</table>
+<router-outlet></router-outlet> 
+  
+  

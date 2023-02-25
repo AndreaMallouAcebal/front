@@ -1,0 +1,32 @@
+<h2>Lista usuarios</h2>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Apellidos</th>
+          <th>Email</th>
+          <th>Dni</th>
+          <th>Contraseña</th>
+          <th>Rol</th>
+          <th>Acciones<th>
+        </tr>
+    </thead>
+      <tbody class="table-dark">
+        <tr *ngFor="let usuario of usuarios">
+          <td>{{usuario.id}}</td>
+          <td>{{usuario.nombre}}</td>
+          <td>{{usuario.apellidos}}</td>
+          <td>{{usuario.email}}</td>
+          <td>{{usuario.dni}}</td>
+          <td class="hidetext">{{usuario.contrasenia}}</td>
+          <td>{{usuario.rol.nombre}}</td>
+          <td>
+            <button type="button" routerLink="{{usuario.id}}" class="btn btn-success" >Editar</button>
+            <button type="button" class="btn btn-danger" (click)="onClickEliminar(usuario.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+</table>
+<router-outlet></router-outlet> 
+  

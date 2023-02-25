@@ -1,0 +1,25 @@
+<h2>Lista citas</h2>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Imagen</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+      <tbody class="table-dark">
+        <tr *ngFor="let patrocinador of patrocinadores">
+            <td>{{patrocinador.id}}</td>
+            <td>{{patrocinador.nombre}}</td>
+            <td>{{patrocinador.imagen}}</td>
+          <td>
+            <button type="button" routerLink="{{patrocinador.id}}" class="btn btn-success" >Editar</button>
+            <button type="button" class="btn btn-danger" (click)="onClickEliminar(patrocinador.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+</table>
+<router-outlet></router-outlet> 
+  
+  

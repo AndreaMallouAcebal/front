@@ -1,0 +1,33 @@
+
+<div class=""col-md-6 offset-md-3>
+    <h3 class="text-center">Editar un usuario</h3>
+    <form (ngSubmit)="onSubmit()" [formGroup]="usuariosForm"><br>
+      <div class="form-group">
+        <label>Nombre: </label>
+        <input type="text" [(ngModel)]="usuario.nombre" name="nombre" id="nombre" formControlName="nombre" class="form-control">
+      </div><br>
+      <div class="form-group">
+        <label>Apellidos: </label>
+        <input type="text" [(ngModel)]="usuario.apellidos" name="apellidos" id="apellidos" formControlName="apellidos" class="form-control">
+      </div><br>
+      <div class="form-group">
+        <label>email: </label>
+        <input type="email" [(ngModel)]="usuario.email" name="email" id="email" formControlName="email" class="form-control">
+      </div><br>
+       <div class="form-group">
+        <label>dni</label>
+        <input type="text"[(ngModel)]="usuario.dni" name="dni" id="dni"  formControlName="dni" class="form-control">
+      </div><br>
+      <div class="form-group">
+        <label>Contraseña</label>
+        <input type="password" [(ngModel)]="usuario.contrasenia" name="contrasenia" id="contrasenia" formControlName="contrasenia" class="form-control">
+      </div><br>
+      <div class="form-group">
+        <label>Rol: </label>
+        <select formControlName="rol_id" [(ngModel)]="rol" (change)="setRolUsuario()" class="form-control">
+          <option *ngFor="let r of roles" [ngValue]="r" >{{r.nombre}}</option>
+        </select>      
+      </div><br>
+      <button type="submit" class="btn btn-success" [disabled]="usuariosForm.invalid">Guardar</button>
+    </form>
+  </div><br>

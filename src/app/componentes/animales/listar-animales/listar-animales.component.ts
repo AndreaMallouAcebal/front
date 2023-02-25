@@ -1,9 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Route, Router } from '@angular/router';
-import { Animal } from 'src/app/models/animal';
+import { Animal } from 'src/app/models/animal/animal';
+import { Cita } from 'src/app/models/cita/cita';
 import { AnimalesService } from 'src/app/services/animales/animales.service';
+import { CitasService } from 'src/app/services/citas/citas.service';
 
 @Component({
   selector: 'app-listar-animales',
@@ -13,14 +14,19 @@ import { AnimalesService } from 'src/app/services/animales/animales.service';
 export class ListarAnimalesComponent implements OnInit {
   animales:Animal[];
   animal :Animal;
+  citas:Cita[];
   constructor(
-    private http: HttpClient,
     public fb: FormBuilder,
     public animalesService : AnimalesService,
-    private router: Router
+    public citasService : CitasService
   ){}
 
   ngOnInit(): void{
+    //cargamos las citas
+    this.citasService.getAllCitas().subscribe(dato=>{
+      this.citas = dato;
+    });
+
     this.obtenerAnimales();
   }
 
@@ -31,9 +37,17 @@ export class ListarAnimalesComponent implements OnInit {
   }
 
 
-  onClickEliminar(idanimal:number){
-    this.animalesService.deleteAnimal(idanimal).subscribe(
-      animales=> this.animales= this.animales.filter(ani=>ani.idanimal!==idanimal)
+  onClickEliminar(id:number){
+  
+     //guardamos las citas que tiene el animal
+     this.citas=this.citas.filter(c=>c.animal.id=id)
+    if(this.citas.length>1){
+      this.citas.forEach(c=>
+      this.citasService.deleteCita(c.id)
+      )
+    }
+    this.animalesService.deleteAnimal(id).subscribe(
+      animales=> this.animales= this.animales.filter(ani=>ani.id!==id)
     );
   }
 

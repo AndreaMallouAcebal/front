@@ -7,7 +7,7 @@ import { Component, OnInit, ɵsetAllowDuplicateNgModuleIdsForTest } from '@angul
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Sistema gestión de animales';
+  title = '';
   constructor(
     
   ){

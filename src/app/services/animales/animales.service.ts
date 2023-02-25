@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Animal} from 'src/app/models/animal';
+import { Animal} from 'src/app/models/animal/animal';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +29,7 @@ export class AnimalesService {
   }
 
   public updateAnimal(animal:Animal): Observable<any>{
-    return this.http.put(this.animalUrl + '/' + animal.idanimal , animal);
+    return this.http.put(this.animalUrl + '/' + animal.id , animal);
   }
 
    deleteAnimal(id: number): Observable<Animal> {

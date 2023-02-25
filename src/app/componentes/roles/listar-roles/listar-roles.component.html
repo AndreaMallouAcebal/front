@@ -1,0 +1,23 @@
+<h2>Lista citas</h2>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+          <th>Id</th>
+          <th>nombre</th>
+          <th>Acciones</th>
+        </tr>
+    </thead>
+      <tbody class="table-dark">
+        <tr *ngFor="let rol of roles">
+          <td>{{rol.id}}</td>
+          <td>{{rol.nombre}}</td>
+          <td>
+            <button type="button" routerLink="{{rol.id}}" class="btn btn-success" >Editar</button>
+            <button type="button" class="btn btn-danger" (click)="onClickEliminar(rol.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+</table>
+<router-outlet></router-outlet> 
+  
+  

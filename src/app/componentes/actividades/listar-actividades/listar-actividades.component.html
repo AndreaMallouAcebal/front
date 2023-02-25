@@ -1,0 +1,27 @@
+<h2>Lista animales</h2>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>fecha</th>
+          <th>descripcion</th>
+          <th>Acciones</th>
+        </tr>
+    </thead>
+      <tbody class="table-dark">
+        <tr *ngFor="let actividad of actividades">
+          <td>{{actividad.id}}</td>
+          <td>{{actividad.nombre}}</td>
+          <td>{{actividad.fecha}}</td>
+          <td>{{actividad.descripcion}}</td>
+          <td>
+            <button type="button" routerLink="{{actividad.id}}" class="btn btn-success" >Editar</button>
+            <button type="button" class="btn btn-danger" (click)="onClickEliminar(actividad.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+</table>
+<router-outlet></router-outlet> 
+  
+  

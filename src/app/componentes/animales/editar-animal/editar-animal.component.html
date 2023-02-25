@@ -29,5 +29,12 @@
       <button type="submit" class="btn btn-success" [disabled]="animalesForm.invalid" (click)="guardarAnimal(animal)" >Guardar</button>
     </form>
   </div><br>
+  <h1>Citas</h1>
+  <ul *ngFor="let cita of citas">
+    <li>{{cita.id}}</li>
+    <li>{{cita.fecha}}</li>
+
+  </ul>
+
   
   

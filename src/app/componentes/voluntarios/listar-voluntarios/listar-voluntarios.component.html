@@ -1,0 +1,27 @@
+<h2>Lista voluntarios</h2>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+          <th>Id</th>
+          <th>dia de la semana</th>
+          <th>hora</th>
+          <th>usuario</th>
+          <th>Acciones</th>
+        </tr>
+    </thead>
+      <tbody class="table-dark">
+        <tr *ngFor="let voluntario of voluntarios">
+          <td>{{voluntario.id}}</td>
+          <td>{{voluntario.diaSemana}}</td>
+          <td>{{voluntario.hora}}</td>
+          <td>{{voluntario.usuario.nombre}}</td>
+          <td>
+            <button type="button" routerLink="{{voluntario.id}}" class="btn btn-success" >Editar</button>
+            <button type="button" class="btn btn-danger" (click)="onClickEliminar(voluntario.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+</table>
+<router-outlet></router-outlet> 
+  
+  

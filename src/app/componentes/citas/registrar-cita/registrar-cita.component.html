@@ -1,0 +1,27 @@
+
+<div class=""col-md-6 offset-md-3>
+    <h3 class="text-center">Registrar una cita</h3>
+    <form (ngSubmit)="onSubmit()" [formGroup]="citasForm"><br>
+      <div class="form-group">
+        <label>Fecha: </label>
+        <input type="date" [(ngModel)]="cita.fecha" name="fecha" id="fecha" formControlName="fecha" class="form-control">
+      </div><br>
+      <div class="form-group">
+        <label>Animal: </label>
+        <select formControlName="animal_id" [(ngModel)]="animal" class="form-control" 
+        (change)="setAnimalCita()">
+          <option *ngFor="let animal of animales" [ngValue]="animal">{{animal.nombre}}</option>
+        </select> 
+      </div><br>
+      <div class="form-group">
+        <label>Usuario: </label>
+        <select formControlName="usuario_id" [(ngModel)]="usuario" class="form-control"
+        (change)="setUsuarioCita()">
+          <option *ngFor="let usuario of usuarios" [ngValue]="usuario">{{usuario.nombre}}</option>
+        </select>      
+      </div><br>
+      <button type="submit" class="btn btn-success" [disabled]="citasForm.invalid">Guardar</button>
+    </form>
+  </div><br>
+  
+  

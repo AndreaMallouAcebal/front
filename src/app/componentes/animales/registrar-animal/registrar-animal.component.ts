@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Animal } from 'src/app/models/animal';
+import { Animal } from 'src/app/models/animal/animal';
 import { AnimalesService } from 'src/app/services/animales/animales.service';
 
 @Component({

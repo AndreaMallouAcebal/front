@@ -1,0 +1,11 @@
+
+<div class=""col-md-6 offset-md-3>
+    <h3 class="text-center">Editar un rol</h3>
+    <form (ngSubmit)="onSubmit()" [formGroup]="rolesForm"><br>
+      <div class="form-group">
+        <label>Nombre: </label>
+        <input type="text" [(ngModel)]="rol.nombre" name="nombre" id="nombre" formControlName="nombre" class="form-control">
+      </div><br>
+      <button type="submit" class="btn btn-success" [disabled]="rolesForm.invalid" (click)="guardarRol(rol)" >Guardar</button>
+    </form>
+  </div><br>
