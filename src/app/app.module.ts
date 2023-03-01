@@ -29,8 +29,14 @@ import { EditarActividadComponent } from './componentes/actividades/editar-activ
 import { RegistrarActividadComponent } from './componentes/actividades/registrar-actividad/registrar-actividad.component';
 import { CarruselComponent } from './componentes/carrusel/carrusel.component';
 import { NgImageSliderModule } from 'ng-image-slider';
-//bootstrap
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PieComponent } from './componentes/pie/pie.component';
+import { BarraNavegacionComponent } from './componentes/barra-navegacion/barra-navegacion.component';
+import { RegistroComponent } from './componentes/registro/registro.component';
+import { InicioSesionComponent } from './componentes/inicio-sesion/inicio-sesion.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { ContactoComponent } from './componentes/contacto/contacto.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +63,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     EditarActividadComponent,
     RegistrarActividadComponent,
     CarruselComponent,
+    PieComponent,
+    BarraNavegacionComponent,
+    RegistroComponent,
+    InicioSesionComponent,
+    ContactoComponent,
    
   ],
   imports: [
@@ -67,7 +78,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    NgImageSliderModule
+    NgImageSliderModule,
+    MatSlideToggleModule,
+    GoogleMapsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

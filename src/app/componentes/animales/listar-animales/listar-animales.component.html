@@ -1,4 +1,4 @@
-<h2>Lista animales</h2>
+<!-- <h2>Lista animales</h2>
 <table class="table table-striped">
     <thead class="table-dark">
         <tr>
@@ -23,7 +23,29 @@
           </td>
         </tr>
       </tbody>
-</table>
-<router-outlet></router-outlet> 
-  
+</table> -->
+<!-- <div class="container" >
+  <div class="peroygato" >
+       
+            <button type="button" class="btn btn-sm btn-outline-primary" style="width:50%" (click)="onClickPerros()">Perros</button>
+         
+          <button type="button" class="btn btn-sm btn-outline-primary" style="width:50%" (click)="onClickGatos()">Gatos</button>
+       
+  </div> -->
+<!-- </div> -->
+ <div class="container" >
+      <div class="for" *ngFor="let animal of animales"  >
+              <div class="card"  style="width: 25rem; margin: 6px;">
+                    <a routerLink="{{animal.id}}">  <img [src]="animal.imagen" class="card-img-top" alt="animal"></a>
+                  <div>
+                      <div class="card-body">
+                          <h5 class="card-title">{{animal.nombre}}</h5>
+                          <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                          <button type="button" (click)="onClickEliminar(animal.id)" class="btn btn-sm btn-outline-secondary">Eliminar</button>
+
+                      </div>
+                  </div>
+             </div>
+      </div>
+  </div>
   

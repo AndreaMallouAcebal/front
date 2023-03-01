@@ -1,0 +1,12 @@
+img{
+  height: 300px;
+  object-fit: cover;
+  align-items: center;
+}
+.for{
+  display: inline-block;
+}
+.container{
+  text-align: center !important;
+}
+

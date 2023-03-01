@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { bindCallback } from 'rxjs';
 import { Animal } from 'src/app/models/animal/animal';
 import { Cita } from 'src/app/models/cita/cita';
 import { AnimalesService } from 'src/app/services/animales/animales.service';
@@ -47,11 +48,20 @@ export class ListarAnimalesComponent implements OnInit {
       )
     }
     this.animalesService.deleteAnimal(id).subscribe(
-      animales=> this.animales= this.animales.filter(ani=>ani.id!==id)
+      animales=> this.animales= this.animales.filter(ani=>ani.id!==id),
+      
     );
   }
 
+  onClickGatos(){  
+  this.animales=this.animales.filter(animales=>animales.tipo=="gato");
+}
 
-
+onClickPerros(){
+ async function getanimales(this: any){
+      await this.obtenerAnimales();
+    }
+  this.animales=this.animales.filter(animales=>animales.tipo=="perro");
+}
 
 }

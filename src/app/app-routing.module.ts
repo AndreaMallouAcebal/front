@@ -10,10 +10,12 @@ import { RegistrarAnimalComponent } from './componentes/animales/registrar-anima
 import { EditarCitaComponent } from './componentes/citas/editar-cita/editar-cita.component';
 import { ListarCitasComponent } from './componentes/citas/listar-citas/listar-citas.component';
 import { RegistrarCitaComponent } from './componentes/citas/registrar-cita/registrar-cita.component';
+import { ContactoComponent } from './componentes/contacto/contacto.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { EditarPatrocinadorComponent } from './componentes/patrocinadores/editar-patrocinador/editar-patrocinador.component';
 import { ListarPatrocinadoresComponent } from './componentes/patrocinadores/listar-patrocinadores/listar-patrocinadores.component';
 import { RegistrarPatrocinadorComponent } from './componentes/patrocinadores/registrar-patrocinador/registrar-patrocinador.component';
+import { RegistroComponent } from './componentes/registro/registro.component';
 import { EditarRolComponent } from './componentes/roles/editar-rol/editar-rol.component';
 import { ListarRolesComponent } from './componentes/roles/listar-roles/listar-roles.component';
 import { RegistrarRolComponent } from './componentes/roles/registrar-rol/registrar-rol.component';
@@ -94,6 +96,12 @@ const routes: Routes = [
   },
   {
     path: 'actividades/:id', component: EditarActividadComponent
+  },
+  {
+    path: 'registro', component: RegistroComponent
+  },
+  {
+    path: 'contacto', component: ContactoComponent
   },
 
 ];
