@@ -9,6 +9,7 @@ import { Usuario } from 'src/app/models/usuario/usuario';
 export class UsuariosService {
 
   private usuarioUrl="http://localhost:8080/usuarios";
+  private usuarioAuth="http://localhost:8080/auth/new"
 
   constructor(
     private http:HttpClient
@@ -21,7 +22,7 @@ export class UsuariosService {
 
   //método para registrar animal
   public saveUsuario(usuario: Usuario): Observable<Usuario>{
-    return this.http.post<Usuario>(this.usuarioUrl, usuario);
+    return this.http.post<Usuario>(this.usuarioAuth, usuario);
   } 
 
   public getUsuariolId(id:number): Observable<any>{

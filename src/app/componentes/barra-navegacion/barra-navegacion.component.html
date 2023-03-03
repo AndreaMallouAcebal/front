@@ -12,12 +12,21 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="actividades">Actividades</a>
           </li>
-          
+          <li class="nav-item" *ngIf="isLogged">
+            <a class="nav-link" routerLink="usuarios">Usuarios</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="contacto">Contacto</a>
           </li>
         </ul>
-        <a id="iniciarsesion" class="navbar-brand" routerLink="registro" >Iniciar sesión</a>
+        <ul>
+        <li class="nav-item" *ngIf="!isLogged">
+          <a class="navbar-brand"routerLink="login">Iniciar sesion</a>
+        </li>
+        <li class="nav-item" *ngIf="isLogged" (click)="onLogOut()">
+          <a class="navbar-brand" >Cerrar sesion</a>
+        </li>
+      </ul>
       </div>
     </div>
   </nav>

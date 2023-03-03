@@ -37,6 +37,10 @@ import { InicioSesionComponent } from './componentes/inicio-sesion/inicio-sesion
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ContactoComponent } from './componentes/contacto/contacto.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { LoginComponent } from './componentes/auth/login.component';
+import { interceptorProvider } from './services/interceptors/prod-interceptor.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,6 +72,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
     RegistroComponent,
     InicioSesionComponent,
     ContactoComponent,
+    LoginComponent,
    
   ],
   imports: [
@@ -82,7 +87,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
     MatSlideToggleModule,
     GoogleMapsModule
   ],
-  providers: [],
+  providers: [interceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

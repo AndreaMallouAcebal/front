@@ -14,7 +14,7 @@ export class AnimalesService {
     private http:HttpClient
   ) { }
 
-  //método para obtener los empleados
+  //método para obtener los animales
   public getAllAnimales():Observable<Animal[]>{
     return this.http.get<Animal[]>(this.animalUrl);
   }

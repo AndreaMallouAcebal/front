@@ -7,10 +7,13 @@ import { RegistrarActividadComponent } from './componentes/actividades/registrar
 import { EditarAnimalComponent } from './componentes/animales/editar-animal/editar-animal.component';
 import { ListarAnimalesComponent } from './componentes/animales/listar-animales/listar-animales.component';
 import { RegistrarAnimalComponent } from './componentes/animales/registrar-animal/registrar-animal.component';
+import { LoginComponent } from './componentes/auth/login.component';
+import { RegisterComponent } from './componentes/auth/register.component';
 import { EditarCitaComponent } from './componentes/citas/editar-cita/editar-cita.component';
 import { ListarCitasComponent } from './componentes/citas/listar-citas/listar-citas.component';
 import { RegistrarCitaComponent } from './componentes/citas/registrar-cita/registrar-cita.component';
 import { ContactoComponent } from './componentes/contacto/contacto.component';
+import { InicioSesionComponent } from './componentes/inicio-sesion/inicio-sesion.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { EditarPatrocinadorComponent } from './componentes/patrocinadores/editar-patrocinador/editar-patrocinador.component';
 import { ListarPatrocinadoresComponent } from './componentes/patrocinadores/listar-patrocinadores/listar-patrocinadores.component';
@@ -30,6 +33,15 @@ import { RegistrarVoluntarioComponent } from './componentes/voluntarios/registra
 const routes: Routes = [
   {
     path: 'inicio', component: InicioComponent
+  },
+  {
+    path: 'login', component: LoginComponent
+  },
+  {
+    path: 'register', component: RegisterComponent
+  },
+  {
+    path: 'welcome', component: InicioSesionComponent
   },
   {
     path: '', redirectTo:'inicio', pathMatch:'full'
