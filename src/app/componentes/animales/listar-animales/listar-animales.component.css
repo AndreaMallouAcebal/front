@@ -2,11 +2,24 @@ img{
   height: 300px;
   object-fit: cover;
   align-items: center;
+  opacity: 0.8;
 }
-.for{
-  display: inline-block;
-}
-.container{
-  text-align: center !important;
+img:hover{
+  opacity: 1;
+  -webkit-transform:scale(1.1);transform:scale(1.1);
 }
 
+.for{
+  display: inline-block;
+  margin: 1%;
+}
+.contenedor{
+  width: 100%;
+}
+#nuevo{
+  text-align: center !important;
+  padding: 0% 0 2% 0;
+}
+h1{
+  padding-bottom: 1%;
+}

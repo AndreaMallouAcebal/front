@@ -14,9 +14,6 @@ import { RegistrarCitaComponent } from './componentes/citas/registrar-cita/regis
 import { ListarUsuariosComponent } from './componentes/usuarios/listar-usuarios/listar-usuarios.component';
 import { EditarUsuarioComponent } from './componentes/usuarios/editar-usuario/editar-usuario.component';
 import { RegistrarUsuarioComponent } from './componentes/usuarios/registrar-usuario/registrar-usuario.component';
-import { RegistrarVoluntarioComponent } from './componentes/voluntarios/registrar-voluntario/registrar-voluntario.component';
-import { EditarVoluntarioComponent } from './componentes/voluntarios/editar-voluntario/editar-voluntario.component';
-import { ListarVoluntariosComponent } from './componentes/voluntarios/listar-voluntarios/listar-voluntarios.component';
 import { ListarRolesComponent } from './componentes/roles/listar-roles/listar-roles.component';
 import { EditarRolComponent } from './componentes/roles/editar-rol/editar-rol.component';
 import { RegistrarRolComponent } from './componentes/roles/registrar-rol/registrar-rol.component';
@@ -36,10 +33,12 @@ import { RegistroComponent } from './componentes/registro/registro.component';
 import { InicioSesionComponent } from './componentes/inicio-sesion/inicio-sesion.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ContactoComponent } from './componentes/contacto/contacto.component';
-import { GoogleMapsModule } from '@angular/google-maps';
+//import { GoogleMapsModule } from '@angular/google-maps';
 import { LoginComponent } from './componentes/auth/login.component';
 import { interceptorProvider } from './services/interceptors/prod-interceptor.service';
-
+import { TableModule } from 'primeng/table';
+import {ButtonModule} from 'primeng/button';
+import { DetallesAnimalComponent } from './componentes/animales/detalles-animal/detalles-animal.component';
 
 @NgModule({
   declarations: [
@@ -53,9 +52,6 @@ import { interceptorProvider } from './services/interceptors/prod-interceptor.se
     ListarUsuariosComponent,
     EditarUsuarioComponent,
     RegistrarUsuarioComponent,
-    RegistrarVoluntarioComponent,
-    EditarVoluntarioComponent,
-    ListarVoluntariosComponent,
     ListarRolesComponent,
     EditarRolComponent,
     RegistrarRolComponent,
@@ -73,7 +69,7 @@ import { interceptorProvider } from './services/interceptors/prod-interceptor.se
     InicioSesionComponent,
     ContactoComponent,
     LoginComponent,
-   
+    DetallesAnimalComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,7 +81,9 @@ import { interceptorProvider } from './services/interceptors/prod-interceptor.se
     NgbModule,
     NgImageSliderModule,
     MatSlideToggleModule,
-    GoogleMapsModule
+    TableModule,
+    ButtonModule
+   // GoogleMapsModule
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]

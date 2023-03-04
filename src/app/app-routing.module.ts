@@ -25,10 +25,6 @@ import { RegistrarRolComponent } from './componentes/roles/registrar-rol/registr
 import { EditarUsuarioComponent } from './componentes/usuarios/editar-usuario/editar-usuario.component';
 import { ListarUsuariosComponent } from './componentes/usuarios/listar-usuarios/listar-usuarios.component';
 import { RegistrarUsuarioComponent } from './componentes/usuarios/registrar-usuario/registrar-usuario.component';
-import { EditarVoluntarioComponent } from './componentes/voluntarios/editar-voluntario/editar-voluntario.component';
-import { ListarVoluntariosComponent } from './componentes/voluntarios/listar-voluntarios/listar-voluntarios.component';
-import { RegistrarVoluntarioComponent } from './componentes/voluntarios/registrar-voluntario/registrar-voluntario.component';
-
 
 const routes: Routes = [
   {
@@ -81,15 +77,6 @@ const routes: Routes = [
   },
   {
     path: 'roles/:id', component: EditarRolComponent
-  },
-  {
-    path: 'voluntarios', component: ListarVoluntariosComponent
-  },
-  {
-    path: 'registrar-voluntario', component: RegistrarVoluntarioComponent
-  },
-  {
-    path: 'voluntarios/:id', component: EditarVoluntarioComponent
   },
   {
     path: 'patrocinadores', component: ListarPatrocinadoresComponent

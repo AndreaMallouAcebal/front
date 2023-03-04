@@ -7,6 +7,7 @@ img{
 }
 li{
     padding-right: 6%;
+    list-style: none;
 }
 
 #iniciarsesion{

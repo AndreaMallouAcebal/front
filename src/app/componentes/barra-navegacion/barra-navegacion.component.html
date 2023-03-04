@@ -10,18 +10,21 @@
             <a class="nav-link" aria-current="page" href="animales">Animales</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="actividades">Actividades</a>
+            <a class="nav-link" href="actividades">Actividades</a>
           </li>
           <li class="nav-item" *ngIf="isLogged">
-            <a class="nav-link" routerLink="usuarios">Usuarios</a>
+            <a class="nav-link" href="usuarios">Usuarios</a>
+          </li>
+          <li class="nav-item" *ngIf="isLogged">
+            <a class="nav-link" href="citas">Citas</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="contacto">Contacto</a>
+            <a class="nav-link" href="contacto">Contacto</a>
           </li>
         </ul>
         <ul>
         <li class="nav-item" *ngIf="!isLogged">
-          <a class="navbar-brand"routerLink="login">Iniciar sesion</a>
+          <a class="navbar-brand" href="login">Iniciar sesion</a>
         </li>
         <li class="nav-item" *ngIf="isLogged" (click)="onLogOut()">
           <a class="navbar-brand" >Cerrar sesion</a>

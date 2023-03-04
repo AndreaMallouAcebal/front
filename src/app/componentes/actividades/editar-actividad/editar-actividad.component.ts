@@ -42,7 +42,7 @@ export class EditarActividadComponent {
       descripcion: ['', Validators.required],
     });
 
-    this.recuperarusuarios();
+    // this.recuperarusuarios();
   }
 
   guardarActividad(actividad: Actividad) {
@@ -62,22 +62,22 @@ export class EditarActividadComponent {
 
   }
 
-  recuperarusuarios(){
-         //cargamos los usarios
-         this.usuariosService.getAllUsuarios().subscribe(dato => {
-           this.usuarios = dato;
-         });
+  // recuperarusuarios(){
+  //        //cargamos los usarios
+  //        this.usuariosService.getAllUsuarios().subscribe(dato => {
+  //          this.usuarios = dato;
+  //        });
 
     
-         //cargamos los actividadesusuarios
-         this.actividadesusuariosService.getAllActividadesusuarios().subscribe(dato => {
-           this.actividadesusuarios = dato;
-         });
+  //        //cargamos los actividadesusuarios
+  //        this.actividadesusuariosService.getAllActividadesusuarios().subscribe(dato => {
+  //          this.actividadesusuarios = dato;
+  //        });
 
     
-         //guardamos las actividadesusuarios que tiene la actividad
-          this.actividadesusuarios = this.actividadesusuarios.filter(c => c.actividad.id = this.id)
-          console.log(this.actividadesusuarios)
+  //        //guardamos las actividadesusuarios que tiene la actividad
+  //         this.actividadesusuarios = this.actividadesusuarios.filter(c => c.actividad.id = this.id)
+  //         console.log(this.actividadesusuarios)
     
-  }
+  // }
 }

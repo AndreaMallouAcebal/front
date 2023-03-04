@@ -1,1 +1,23 @@
-.hidetext { -webkit-text-security: disc; /* Default */ }
+/*Ocultamos la contraseña*/
+.hidetext { 
+    -webkit-text-security: disc; 
+ }
+
+/*Damos tamaño al vid contenedor de la tabla*/
+.contenedor{
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+}
+
+*{
+    font-size: 18px;
+    color: #333333 ;
+}
+h2{
+    font-size: 30px;
+}
+
+.card{
+    margin-top: 2%;
+}
