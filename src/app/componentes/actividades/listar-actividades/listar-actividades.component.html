@@ -1,5 +1,5 @@
 <img src="../../../assets/img/maraton.jpg" alt="">
-<h1>Actividades <button type="button" class="btn btn-sm btn-outline-secondary"
+<h1>Actividades <button *ngIf="isAdmin" type="button" class="btn btn-sm btn-outline-secondary"
     routerLink="/registrar-actividad">Nueva</button></h1>
 <div class="container">
   <div *ngFor="let actividad of actividades" id="contenedor">
@@ -15,17 +15,18 @@
 
       </ng-template>
       <ng-template pTemplate="footer">
-        <button type="button" class="btn btn-sm btn-outline-secondary" routerLink="{{actividad.id}}">Editar</button>
-        <button type="button" (click)="onClickEliminarActividad(actividad.id)"
+        <button *ngIf="isAdmin" type="button" class="btn btn-sm btn-outline-secondary" routerLink="{{actividad.id}}">Editar</button>
+        <button *ngIf="isAdmin" type="button" (click)="onClickEliminarActividad(actividad.id)"
           class="btn btn-sm btn-outline-secondary">Eliminar</button>
         <button type="button" (click)="onClickApuntarse(actividad.id)"
           class="btn btn-sm btn-outline-secondary">Apuntarse</button>
-        <button type="button" (click)="onClickVerUsuarios(actividad.id)" class="btn btn-sm btn-outline-secondary">Ver
+        <button *ngIf="isAdmin" type="button" (click)="onClickVerUsuarios(actividad.id)" class="btn btn-sm btn-outline-secondary">Ver
           usuarios</button>
       </ng-template>
     </p-panel>
   </div>
 </div>
+<div class="container">
+  <app-pie></app-pie>
+</div>
 
-
-<router-outlet></router-outlet>
