@@ -38,11 +38,10 @@ export class TokenService {
 
   public getAuthorities(): string {
     this.rol = "";
-    if(sessionStorage.getItem(AUTHORITIES_KEY)){
-     JSON.parse(sessionStorage.getItem(AUTHORITIES_KEY)!).foreach( (authority: { authority: string; }) => {
-      this.rol = authority.authority;
-     });
-    }
+    let auth = sessionStorage.getItem(AUTHORITIES_KEY);
+    if(auth){
+      this.rol = JSON.parse(auth!)[0].authority;
+     }
     return this.rol;
   }
 

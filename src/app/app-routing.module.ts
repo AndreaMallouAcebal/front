@@ -26,6 +26,7 @@ import { RegistrarRolComponent } from './componentes/roles/registrar-rol/registr
 import { EditarUsuarioComponent } from './componentes/usuarios/editar-usuario/editar-usuario.component';
 import { ListarUsuariosComponent } from './componentes/usuarios/listar-usuarios/listar-usuarios.component';
 import { RegistrarUsuarioComponent } from './componentes/usuarios/registrar-usuario/registrar-usuario.component';
+import { ProdGuardsService as guard } from './services/guards/prod-guards.service';
 
 const routes: Routes = [
   {
@@ -47,10 +48,10 @@ const routes: Routes = [
     path: 'animales', component: ListarAnimalesComponent
   },
   {
-    path: 'registrar-animal', component: RegistrarAnimalComponent
+    path: 'registrar-animal', component: RegistrarAnimalComponent, canActivate: [guard], data: {expectedRol: ['ADMIN']}
   },
   {
-    path: 'animales/:id', component: EditarAnimalComponent
+    path: 'animales/:id', component: EditarAnimalComponent, canActivate: [guard], data: {expectedRol: ['ADMIN']}
   },
   {
     path: 'detalles-animal/:id', component: DetallesAnimalComponent
@@ -59,46 +60,46 @@ const routes: Routes = [
     path: 'citas', component: ListarCitasComponent
   },
   {
-    path: 'registrar-cita', component: RegistrarCitaComponent
+    path: 'registrar-cita', component: RegistrarCitaComponent, canActivate: [guard], data: {expectedRol: ['ADMIN']}
   },
   {
-    path: 'citas/:id', component: EditarCitaComponent
+    path: 'citas/:id', component: EditarCitaComponent, canActivate: [guard], data: {expectedRol: ['ADMIN']}
   },
   {
-    path: 'usuarios', component: ListarUsuariosComponent
+    path: 'usuarios', component: ListarUsuariosComponent, canActivate: [guard], data: {expectedRol: ['ADMIN']}
   },
   {
-    path: 'registrar-usuario', component: RegistrarUsuarioComponent
+    path: 'registrar-usuario', component: RegistrarUsuarioComponent, canActivate: [guard], data: {expectedRol: ['ADMIN']}
   },
   {
-    path: 'usuarios/:id', component: EditarUsuarioComponent
+    path: 'usuarios/:id', component: EditarUsuarioComponent, canActivate: [guard], data: {expectedRol: ['ADMIN']}
   },
   {
-    path: 'roles', component: ListarRolesComponent
+    path: 'roles', component: ListarRolesComponent, canActivate: [guard], data: {expectedRol: ['ADMIN']}
   },
   {
-    path: 'registrar-rol', component: RegistrarRolComponent
+    path: 'registrar-rol', component: RegistrarRolComponent, canActivate: [guard], data: {expectedRol: ['ADMIN']}
   },
   {
-    path: 'roles/:id', component: EditarRolComponent
+    path: 'roles/:id', component: EditarRolComponent, canActivate: [guard], data: {expectedRol: ['ADMIN']}
   },
   {
-    path: 'patrocinadores', component: ListarPatrocinadoresComponent
+    path: 'patrocinadores', component: ListarPatrocinadoresComponent, canActivate: [guard], data: {expectedRol: ['ADMIN']}
   },
   {
-    path: 'registrar-patrocinador', component: RegistrarPatrocinadorComponent
+    path: 'registrar-patrocinador', component: RegistrarPatrocinadorComponent, canActivate: [guard], data: {expectedRol: ['ADMIN']}
   },
   {
-    path: 'patrocinadores/:id', component: EditarPatrocinadorComponent
+    path: 'patrocinadores/:id', component: EditarPatrocinadorComponent, canActivate: [guard], data: {expectedRol: ['ADMIN']}
   },
   {
     path: 'actividades', component: ListarActividadesComponent
   },
   {
-    path: 'registrar-actividad', component: RegistrarActividadComponent
+    path: 'registrar-actividad', component: RegistrarActividadComponent, canActivate: [guard], data: {expectedRol: ['ADMIN']}
   },
   {
-    path: 'actividades/:id', component: EditarActividadComponent
+    path: 'actividades/:id', component: EditarActividadComponent, canActivate: [guard], data: {expectedRol: ['ADMIN']}
   },
   {
     path: 'registro', component: RegistroComponent

@@ -6,6 +6,7 @@ import { Animal } from 'src/app/models/animal/animal';
 import { Cita } from 'src/app/models/cita/cita';
 import { AnimalesService } from 'src/app/services/animales/animales.service';
 import { CitasService } from 'src/app/services/citas/citas.service';
+import { TokenService } from 'src/app/services/seguridad/token.service';
 
 @Component({
   selector: 'app-listar-animales',
@@ -16,10 +17,12 @@ export class ListarAnimalesComponent implements OnInit {
   animales:Animal[];
   animal :Animal;
   citas:Cita[];
+  isAdmin = false; 
   constructor(
     public fb: FormBuilder,
     public animalesService : AnimalesService,
-    public citasService : CitasService
+    public citasService : CitasService,
+    private tokenService : TokenService
   ){}
 
   ngOnInit(): void{
@@ -27,7 +30,9 @@ export class ListarAnimalesComponent implements OnInit {
     this.citasService.getAllCitas().subscribe(dato=>{
       this.citas = dato;
     });
-
+    if(this.tokenService.getAuthorities() === 'ADMIN'){
+      this.isAdmin = true;
+    }
     this.obtenerAnimales();
   }
 

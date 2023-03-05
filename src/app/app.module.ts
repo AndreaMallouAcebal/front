@@ -39,6 +39,7 @@ import { TableModule } from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
 import { DetallesAnimalComponent } from './componentes/animales/detalles-animal/detalles-animal.component';
 import {PanelModule} from 'primeng/panel';
+import { RegisterComponent } from './componentes/auth/register.component';
 
 
 @NgModule({
@@ -70,6 +71,7 @@ import {PanelModule} from 'primeng/panel';
     InicioSesionComponent,
     ContactoComponent,
     LoginComponent,
+    RegisterComponent,
     DetallesAnimalComponent,
   ],
   imports: [
