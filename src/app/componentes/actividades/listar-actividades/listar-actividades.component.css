@@ -1,19 +1,24 @@
-.row{
-    text-align: justify;
-}
-h3{
-    padding: 5% 0 1% 0;
-}
+
 button{
     margin-right: 10px;
 }
 h1{
     text-align: center;
+    padding: 4% 0 2% 0;
 }
 p{
     font-size: 20px;
+    margin: 1% 0 0 0;
 }
   
 button{
 font-size: 16px;
+}
+
+img{
+    width: 100%;
+    opacity: 0.8;
+  }
+p-panel{
+    margin:5%
 }

@@ -1,43 +1,31 @@
- <h1>Actividades  <button type="button" class="btn btn-sm btn-outline-secondary"
-  routerLink="/registrar-actividad">Nueva</button></h1>
-<!--<table class="table table-striped">
-    <thead class="table-dark">
-        <tr>
-          <th>Id</th>
-          <th>Nombre</th>
-          <th>fecha</th>
-          <th>descripcion</th>
-          <th>Acciones</th>
-        </tr>
-    </thead>
-      <tbody class="table-dark">
-        <tr *ngFor="let actividad of actividades">
-          <td>{{actividad.id}}</td>
-          <td>{{actividad.nombre}}</td>
-          <td>{{actividad.fecha}}</td>
-          <td>{{actividad.descripcion}}</td>
-          <td>
-            <button type="button" routerLink="{{actividad.id}}" class="btn btn-success" >Editar</button>
-            <button type="button" class="btn btn-danger" (click)="onClickEliminar(actividad.id)">Eliminar</button>
-          </td>
-        </tr>
-      </tbody>
-</table> -->
- <div class="container">
-  <div class="row" *ngFor="let actividad of actividades">
-    <div class="card-body">
-      <h3 class="card-title">{{actividad.nombre}}</h3>
-      <p>{{actividad.fecha}}</p>
-      <p>{{actividad.descripcion}}</p>
-      <button type="button" class="btn btn-sm btn-outline-secondary"
-        routerLink="{{actividad.id}}">Editar</button>
-      <button type="button" (click)="onClickEliminarActividad(actividad.id)"
-        class="btn btn-sm btn-outline-secondary">Eliminar</button>
+<img src="../../../assets/img/maraton.jpg" alt="">
+<h1>Actividades <button type="button" class="btn btn-sm btn-outline-secondary"
+    routerLink="/registrar-actividad">Nueva</button></h1>
+<div class="container">
+  <div *ngFor="let actividad of actividades" id="contenedor">
+    <p-panel>
+      <ng-template pTemplate="header">
+        <h3>{{actividad.nombre}}</h3>
+      </ng-template>
+
+      <ng-template pTemplate="content">
+        {{actividad.descripcion}}
+        <hr>
+        <p>Fecha: {{actividad.fecha}}</p>
+
+      </ng-template>
+      <ng-template pTemplate="footer">
+        <button type="button" class="btn btn-sm btn-outline-secondary" routerLink="{{actividad.id}}">Editar</button>
+        <button type="button" (click)="onClickEliminarActividad(actividad.id)"
+          class="btn btn-sm btn-outline-secondary">Eliminar</button>
         <button type="button" (click)="onClickApuntarse(actividad.id)"
-        class="btn btn-sm btn-outline-secondary">Apuntarse</button>
-        <button type="button" (click)="onClickVerUsuarios(actividad.id)"
-        class="btn btn-sm btn-outline-secondary">Ver usuarios</button>
-    </div>
+          class="btn btn-sm btn-outline-secondary">Apuntarse</button>
+        <button type="button" (click)="onClickVerUsuarios(actividad.id)" class="btn btn-sm btn-outline-secondary">Ver
+          usuarios</button>
+      </ng-template>
+    </p-panel>
   </div>
-</div> 
+</div>
+
+
 <router-outlet></router-outlet>

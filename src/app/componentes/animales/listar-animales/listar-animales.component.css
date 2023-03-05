@@ -12,6 +12,7 @@ img:hover{
 .for{
   display: inline-block;
   margin: 1%;
+  width: 50%;
 }
 .contenedor{
   width: 100%;

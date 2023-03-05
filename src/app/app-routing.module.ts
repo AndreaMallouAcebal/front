@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EditarActividadComponent } from './componentes/actividades/editar-actividad/editar-actividad.component';
 import { ListarActividadesComponent } from './componentes/actividades/listar-actividades/listar-actividades.component';
 import { RegistrarActividadComponent } from './componentes/actividades/registrar-actividad/registrar-actividad.component';
+import { DetallesAnimalComponent } from './componentes/animales/detalles-animal/detalles-animal.component';
 import { EditarAnimalComponent } from './componentes/animales/editar-animal/editar-animal.component';
 import { ListarAnimalesComponent } from './componentes/animales/listar-animales/listar-animales.component';
 import { RegistrarAnimalComponent } from './componentes/animales/registrar-animal/registrar-animal.component';
@@ -50,6 +51,9 @@ const routes: Routes = [
   },
   {
     path: 'animales/:id', component: EditarAnimalComponent
+  },
+  {
+    path: 'detalles-animal/:id', component: DetallesAnimalComponent
   },
   {
     path: 'citas', component: ListarCitasComponent
@@ -101,6 +105,9 @@ const routes: Routes = [
   },
   {
     path: 'contacto', component: ContactoComponent
+  },
+  {
+    path: 'inicio-sesion', component: InicioSesionComponent
   },
 
 ];

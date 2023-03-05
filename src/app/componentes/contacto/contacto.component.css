@@ -27,3 +27,7 @@ h2{
     align-items: center;
     flex-wrap: wrap;
 }
+img{
+  width: 100%;
+  opacity: 0.8;
+}

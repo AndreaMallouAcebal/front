@@ -33,12 +33,13 @@ import { RegistroComponent } from './componentes/registro/registro.component';
 import { InicioSesionComponent } from './componentes/inicio-sesion/inicio-sesion.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ContactoComponent } from './componentes/contacto/contacto.component';
-//import { GoogleMapsModule } from '@angular/google-maps';
 import { LoginComponent } from './componentes/auth/login.component';
 import { interceptorProvider } from './services/interceptors/prod-interceptor.service';
 import { TableModule } from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
 import { DetallesAnimalComponent } from './componentes/animales/detalles-animal/detalles-animal.component';
+import {PanelModule} from 'primeng/panel';
+
 
 @NgModule({
   declarations: [
@@ -82,8 +83,8 @@ import { DetallesAnimalComponent } from './componentes/animales/detalles-animal/
     NgImageSliderModule,
     MatSlideToggleModule,
     TableModule,
-    ButtonModule
-   // GoogleMapsModule
+    ButtonModule,
+    PanelModule
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]
