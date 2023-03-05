@@ -3,6 +3,7 @@ import { Animal } from 'src/app/models/animal/animal';
 import { Patrocinador } from 'src/app/models/patrocinador/patrocinador';
 import { AnimalesService } from 'src/app/services/animales/animales.service';
 import { PatrocinadoresService } from 'src/app/services/patrocinadores/patrocinadores.service';
+import { TokenService } from 'src/app/services/seguridad/token.service';
 
 
 @Component({
@@ -13,16 +14,20 @@ import { PatrocinadoresService } from 'src/app/services/patrocinadores/patrocina
 export class InicioComponent {
   animales:Animal[]=[];
   patrocinadores:Patrocinador[]=[];
+  isAdmin = false;
 
   constructor(
     private animalesService: AnimalesService,
-    private patrocinadoresService:PatrocinadoresService
+    private patrocinadoresService:PatrocinadoresService,
+    private tokenService: TokenService
     ){}
 
   ngOnInit(){
     this.obtenerAnimales();
     this.obtenerPatrocinadores();
-    console.log(this.animales)
+    if(this.tokenService.getAuthorities() === 'ADMIN'){
+      this.isAdmin = true;
+    }
   }
 
   obtenerAnimales(){

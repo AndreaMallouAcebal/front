@@ -8,9 +8,8 @@
                 <div>
                     <div class="card-body">
                         <h5 class="card-title">{{animal.nombre}}</h5>
-                        <button type="button" class="btn btn-sm btn-outline-secondary" routerLink="../animales/{{animal.id}}">Edit</button>
-                        <button type="button" (click)="onClickEliminarAnimal(animal.id)" class="btn btn-sm btn-outline-secondary">Eliminar</button>
-  
+                        <button *ngIf="isAdmin" type="button" class="btn btn-sm btn-outline-secondary" routerLink="../animales/{{animal.id}}">Edit</button>
+                        <button *ngIf="isAdmin" type="button" (click)="onClickEliminarAnimal(animal.id)" class="btn btn-sm btn-outline-secondary">Eliminar</button>
                     </div>
                 </div>
            </div>
@@ -34,8 +33,8 @@
   <div class="pat">
     <img src={{patrocinador.imagen}} class="figurepatrocinadores">
     <figcaption>{{patrocinador.nombre}}</figcaption>
-    <button type="button" class="btn btn-sm btn-outline-secondary" routerLink="../patrocinadores/{{patrocinador.id}}">Edit</button>
-<button type="button" (click)="onClickEliminarPatrocinador(patrocinador.id)" class="btn btn-sm btn-outline-secondary">Eliminar</button>
+    <button *ngIf="isAdmin" type="button" class="btn btn-sm btn-outline-secondary" routerLink="../patrocinadores/{{patrocinador.id}}">Edit</button>
+    <button *ngIf="isAdmin" type="button" (click)="onClickEliminarPatrocinador(patrocinador.id)" class="btn btn-sm btn-outline-secondary">Eliminar</button>
   </div>
 </div>
 </div>

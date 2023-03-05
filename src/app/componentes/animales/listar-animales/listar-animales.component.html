@@ -35,7 +35,7 @@
 <!-- </div> -->
 <div id="nuevo">
   <h1>¡Os presentamos a nuestros amigos!</h1>
-<button type="button" class="btn btn-sm btn-outline-secondary" routerLink="/registrar-animal">Nuevo animal</button>
+<button *ngIf="isAdmin" type="button" class="btn btn-sm btn-outline-secondary" routerLink="/registrar-animal">Nuevo animal</button>
 
  <div class="contenedor" >
       <div class="for" *ngFor="let animal of animales"  >
@@ -44,8 +44,8 @@
                   <div>
                       <div class="card-body">
                           <h5 class="card-title">{{animal.nombre}}</h5>
-                          <button type="button" class="btn btn-sm btn-outline-secondary" routerLink="{{animal.id}}">Editar</button>
-                          <button type="button" (click)="onClickEliminar(animal.id)" class="btn btn-sm btn-outline-secondary">Eliminar</button>
+                          <button *ngIf="isAdmin" type="button" class="btn btn-sm btn-outline-secondary" routerLink="{{animal.id}}">Editar</button>
+                          <button *ngIf="isAdmin" type="button" (click)="onClickEliminar(animal.id)" class="btn btn-sm btn-outline-secondary">Eliminar</button>
                       </div>
                   </div>
              </div>

@@ -9,6 +9,7 @@ import { TokenService } from 'src/app/services/seguridad/token.service';
 export class BarraNavegacionComponent {
 
 isLogged=false;
+isAdmin=false;
 
 constructor (private tokenService: TokenService) {}
 
@@ -17,6 +18,9 @@ ngOnInit(){
     this.isLogged = true;
   }else {
     this.isLogged = false;
+  }
+  if(this.tokenService.getAuthorities() === 'ADMIN'){
+    this.isAdmin = true;
   }
 }
 

@@ -5,6 +5,7 @@ import { Actividadusuario } from 'src/app/models/actividadusuario/actividadusuar
 import { Usuario } from 'src/app/models/usuario/usuario';
 import { ActividadesService } from 'src/app/services/actividades/actividades.service';
 import { ActividadesusuariosService } from 'src/app/services/actividadesusuarios/actividadesusuarios.service';
+import { TokenService } from 'src/app/services/seguridad/token.service';
 import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';
 
 @Component({
@@ -19,12 +20,14 @@ export class ListarActividadesComponent {
   usuarios:Usuario[];
   actividadesusuarios:Actividadusuario[];
   actividadusuario: Actividadusuario;
+  isAdmin = false;
 
   constructor(
     public fb: FormBuilder,
     public actividadesService : ActividadesService,
     public actividadesusuariosService : ActividadesusuariosService,
-    public usuariosService: UsuariosService
+    public usuariosService: UsuariosService,
+    private tokenService: TokenService
   ){}
 
   ngOnInit(): void{
@@ -32,6 +35,10 @@ export class ListarActividadesComponent {
     // this.obtenerUsuarios();
     this.obtenerActividadesUsuarios();
     this.obtenerActividades();
+
+    if(this.tokenService.getAuthorities() === 'ADMIN'){
+      this.isAdmin = true;
+    }
   }
 
   //método para cargar los usuarios

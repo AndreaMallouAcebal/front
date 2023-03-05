@@ -39,6 +39,7 @@ import { interceptorProvider } from './services/interceptors/prod-interceptor.se
 import { TableModule } from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
 import { DetallesAnimalComponent } from './componentes/animales/detalles-animal/detalles-animal.component';
+import { RegisterComponent } from './componentes/auth/register.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { DetallesAnimalComponent } from './componentes/animales/detalles-animal/
     InicioSesionComponent,
     ContactoComponent,
     LoginComponent,
+    RegisterComponent,
     DetallesAnimalComponent,
   ],
   imports: [
