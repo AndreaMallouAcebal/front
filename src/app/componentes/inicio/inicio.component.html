@@ -4,7 +4,7 @@
   <div class="container" >
     <div class="for" *ngFor="let animal of animales"  >
             <div class="card"  style="width: 25rem; margin: 6px;">
-                  <a routerLink="../animales/{{animal.id}}">  <img id="animalesid" [src]="animal.imagen" class="card-img-top" alt="animal"></a>
+                  <a routerLink="../detalles-animal/{{animal.id}}">  <img id="animalesid" [src]="animal.imagen" class="card-img-top" alt="animal"></a>
                 <div>
                     <div class="card-body">
                         <h5 class="card-title">{{animal.nombre}}</h5>

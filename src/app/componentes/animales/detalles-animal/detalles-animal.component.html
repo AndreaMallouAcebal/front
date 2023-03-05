@@ -30,7 +30,7 @@
       <button type="submit" class="btn btn-success" [disabled]="animalesForm.invalid" (click)="guardarAnimal(animal)" >Guardar</button>
     </form>
   </div><br> -->
-
+  <a routerLink="/animales">volver</a>
   <div class="contenedor" >
     <div class="for">
             <div class="card"  style="width: 25rem; margin: 6px;">
@@ -38,6 +38,10 @@
                 <div>
                     <div class="card-body">
                         <h5 class="card-title">{{animal.nombre}}</h5>
+                        <form [formGroup]="citasForm"><br>
+                        <input type="date" [(ngModel)]="cita.fecha" name="fecha" id="fecha" formControlName="fecha" class="form-control">
+                        <button type="button" class="btn btn-sm btn-outline-secondary" routerLink="/animales" (click)="guardarCita()">Pedir cita</button>
+                        </form>
                     </div>
                 </div>
            </div>

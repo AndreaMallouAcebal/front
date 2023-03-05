@@ -1,14 +1,13 @@
 img{
-  height: 300px;
+  height: auto;
   object-fit: cover;
   align-items: center;
-  opacity: 0.8;
-}
-img:hover{
-  opacity: 1;
-  -webkit-transform:scale(1.1);transform:scale(1.1);
+  width: 100%;
 }
 
+a{
+  margin: 2%;
+}
 .for{
   display: inline-block;
   margin: 1%;

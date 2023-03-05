@@ -32,6 +32,7 @@ export class RegistrarCitaComponent {
   ngOnInit() {
     this.obtenerAnimales();
     this.obtenerUsuarios();
+
     this.citasForm = this.fb.group({
       fecha: ['', Validators.required],
       animal_id:['', Validators.required],
@@ -72,6 +73,7 @@ export class RegistrarCitaComponent {
       this.animales = dato;
     });
   }
+  
 
   onSubmit(): void {
     this.guardarCita();
