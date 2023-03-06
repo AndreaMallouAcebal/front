@@ -1,5 +1,7 @@
+import { HttpParams } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Actividad } from 'src/app/models/actividad/actividad';
 import { Actividadusuario } from 'src/app/models/actividadusuario/actividadusuario';
 import { Usuario } from 'src/app/models/usuario/usuario';
@@ -24,9 +26,11 @@ export class ListarActividadesComponent {
   actividadusuario: Actividadusuario;
   isAdmin = false;
   isLogged = false;
+  email: string;
 
   constructor(
     public fb: FormBuilder,
+    private router: Router,
     public actividadesService : ActividadesService,
     public actividadesusuariosService : ActividadesusuariosService,
     public usuariosService: UsuariosService,
@@ -82,9 +86,59 @@ export class ListarActividadesComponent {
 
   }
 
-  onClickApuntarse(id:number){
-  
+  confirmarApuntarse(id: number ){
+    let params = new HttpParams()
+      .set('userEmail', this.tokenService.getEmail())
+      .set('idActividad', id);
+    this.actividadesusuariosService.saveActividadWithEmail(params).subscribe(
+      error => { console.error(error) }
+    );
+    this.irALaListaDeActividades(); 
   }
+
+  irALaListaDeActividades() {
+    this.router.navigate(['/actividades']);
+  }
+
+
+  onClickApuntarse(id: number){
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: '¿Está seguro que quiere apuntarse a esta actividad?',
+      text: 'Rogamos compromiso con las actividades solicitadas',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, confirmar',
+      cancelButtonText: 'No, cancelar',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.confirmarApuntarse(id)
+        swalWithBootstrapButtons.fire(
+          '¡Está apuntado a esta actividad!',
+          'Muchas gracias por su interés',
+          'success'
+        )
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelado',
+          'Ha cancelado la solicitud para apuntarse',
+          'error'
+        )
+      }
+    })
+  }
+
   onClickEliminarActividad(id:number){
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {

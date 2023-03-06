@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Actividadusuario } from 'src/app/models/actividadusuario/actividadusuario';
@@ -10,6 +10,8 @@ export class ActividadesusuariosService {
 
  
   private actividadusuarioUrl="http://localhost:8080/actividadesusuarios";
+
+  
 
   constructor(
     private http:HttpClient
@@ -23,6 +25,9 @@ export class ActividadesusuariosService {
   //método para registrar animal
   public saveActividadusuario(actividadusuario: Actividadusuario): Observable<Actividadusuario>{
     return this.http.post<Actividadusuario>(this.actividadusuarioUrl, actividadusuario);
+  } 
+  public saveActividadWithEmail(params: HttpParams): Observable<Actividadusuario>{
+    return this.http.post<Actividadusuario>(this.actividadusuarioUrl,params);
   } 
 
   public getActividadusuarioId(id:number): Observable<any>{
