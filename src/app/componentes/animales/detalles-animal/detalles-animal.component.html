@@ -1,53 +1,29 @@
-<!-- 
-<div class=""col-md-6 offset-md-3>
-    <h3 class="text-center">Editar un animal</h3>
-    <form (ngSubmit)="onSubmit()" [formGroup]="animalesForm"><br>
-      <div class="form-group">
-        <label>Nombre: </label>
-        <p>{{animal.nombre}}</p>
-        <input type="text" [(ngModel)]="animal.nombre" name="nombre" id="nombre" formControlName="nombre" class="form-control">
-      </div><br>
-      <div class="form-group">
-        <label>Edad: </label>
-        <input type="number" [(ngModel)]="animal.edad" name="edad" id="edad" formControlName="edad" class="form-control">
-      </div><br>
-      <div class="form-group">
-        <label>Raza: </label>
-        <input type="text" [(ngModel)]="animal.raza" name="raza" id="raza" formControlName="raza" class="form-control">
-      </div><br>
-       <div class="form-group">
-        <label>Descripción</label>
-        <input type="text"[(ngModel)]="animal.descripcion" name="descripcion" id="descripcion"  formControlName="descripcion" class="form-control">
-      </div><br>
-      <div class="form-group">
-        <label>Imagen</label>
-        <input type="text" [(ngModel)]="animal.imagen" name="imagen" id="imagen" formControlName="imagen" class="form-control">
-      </div><br>
-      <div class="form-group">
-        <label>Tipo</label>
-        <input type="text"[(ngModel)]="animal.tipo" name="tipo" id="tipo" formControlName="tipo" class="form-control">
-      </div><br>
-      <button type="submit" class="btn btn-success" [disabled]="animalesForm.invalid" (click)="guardarAnimal(animal)" >Guardar</button>
-    </form>
-  </div><br> -->
-  <a routerLink="/animales">volver</a>
-  <div class="contenedor" >
-    <div class="for">
-            <div class="card"  style="width: 25rem; margin: 6px;">
-                  <a routerLink="/detalles-animal/{{animal.id}}">  <img [src]="animal.imagen" class="card-img-top" alt="animal"></a>
-                <div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{animal.nombre}}</h5>
-                        <form [formGroup]="citasForm"><br>
-                        <input *ngIf="isLogged" type="date" [(ngModel)]="cita.fecha" name="fecha" id="fecha" formControlName="fecha" class="form-control">
-                        <button *ngIf="isLogged" type="button" class="btn btn-sm btn-outline-secondary" (click)="guardarCita()">Pedir cita</button>
-                        </form>
-                    </div>
-                </div>
-           </div>
-    </div>
-    <div>
-      
-    </div>
-</div>
+<div class="container py-3">
+  <div class="title h1 text-center">{{animal.nombre}}</div>
+  <!-- Card Start -->
+  <div class="card">
+    <div class="row ">
 
+      <div class="col-md-7 px-3">
+        <div class="card-block px-6">
+          <h3 class="card-title">{{animal.nombre}} - {{animal.raza}} </h3>
+          <h3 class="card-title"> {{animal.edad}} años </h3>
+          <p class="card-text">
+            {{animal.descripcion}}
+          </p>
+           <br>
+          <form [formGroup]="citasForm"><br>
+            <input *ngIf="isLogged" type="date" [(ngModel)]="cita.fecha" name="fecha" id="fecha" formControlName="fecha" class="form-control">
+            <button *ngIf="isLogged" type="submit" [disabled]="citasForm.invalid"  class="btn btn-sm btn-outline-secondary" (click)="onClickguardarCita()">Pedir cita</button>
+            </form>
+        </div>
+      </div>
+      <!-- Carousel start -->
+      <div class="col-md-5">
+        <img src="{{animal.imagen}}">
+      </div>
+      <!-- End of carousel -->
+    </div>
+  </div>
+  <!-- End of card -->
+</div>

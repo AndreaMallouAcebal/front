@@ -26,7 +26,7 @@
           <td>{{usuario.rol.nombre}}</td>
           <td>
            <button routerLink="{{usuario.id}}" style="margin-right: 20px;" pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
-           <button pButton id="eliminarT" pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="onClickEliminar(usuario.id)"></button>
+           <button pButton id="eliminarT" pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="onClickEliminarUsuario(usuario.id)"></button>
          </td>
        </tr>
        </ng-template>

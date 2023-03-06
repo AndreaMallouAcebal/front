@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Patrocinador } from 'src/app/models/patrocinador/patrocinador';
 import { CitasService } from 'src/app/services/citas/citas.service';
 import { PatrocinadoresService } from 'src/app/services/patrocinadores/patrocinadores.service';
+//ventanas emegentes
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-editar-patrocinador',
@@ -42,6 +44,7 @@ export class EditarPatrocinadorComponent {
   guardarPatrocinador(patrocinador : Patrocinador){
     this.patrocinadoresService.updatePatrocinador(patrocinador)
     .subscribe(dato => {
+      Swal.fire('Patrocinador editado con éxito');
       this.patrocinadoresForm.reset();
       this.irALaListaDePAtrocinadores();
     },

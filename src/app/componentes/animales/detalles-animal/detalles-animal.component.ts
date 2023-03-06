@@ -8,6 +8,8 @@ import { AnimalesService } from 'src/app/services/animales/animales.service';
 import { CitasService } from 'src/app/services/citas/citas.service';
 import { TokenService } from 'src/app/services/seguridad/token.service';
 import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';
+//importamos las ventanas de alerta
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-detalles-animal',
@@ -55,8 +57,8 @@ export class DetallesAnimalComponent {
 
     this.citasForm = this.fb.group({
       fecha: ['', Validators.required],
-      animal_id: ['', Validators.required],
-      usuario_id: ['', Validators.required]
+      animal_id: [''],
+      usuario_id: ['']
     });
 
     if(this.tokenService.getToken()){
@@ -64,16 +66,53 @@ export class DetallesAnimalComponent {
     }else {
       this.isLogged = false;
     }
-
   }
 
-  guardarCita() {
+  onclickConfirmarGuardarCita(){
     this.email = this.tokenService.getEmail();
     this.setAnimalCita();
     this.citasService.saveCitaWithEmail(this.cita, this.email).subscribe(
       error => { console.error(error) }
     );
     this.irALaListaDeAnimales();
+  }
+  onClickguardarCita() {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: '¿Está seguro que quiere crear una cita?',
+      text: 'Rogamos compromiso con las citas solicitadas',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, confirmar',
+      cancelButtonText: 'No, cancelar',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.onclickConfirmarGuardarCita()
+        swalWithBootstrapButtons.fire(
+          '¡Cita confirmada!',
+          'Muchas gracias por su interés',
+          'success'
+        )
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelado',
+          'Esta cita ha sido cancelada',
+          'error'
+        )
+      }
+    })
+    
   }
 
   irALaListaDeAnimales() {
@@ -87,5 +126,6 @@ export class DetallesAnimalComponent {
   onSubmit(): void {
 
   }
+
 
 }

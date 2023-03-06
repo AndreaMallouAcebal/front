@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Animal } from 'src/app/models/animal/animal';
 import { AnimalesService } from 'src/app/services/animales/animales.service';
-
+//ventanas emegentes
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-registrar-animal',
   templateUrl: './registrar-animal.component.html',
@@ -32,6 +33,7 @@ animal:Animal=new Animal();
 
   guardarAnimal(){
     this.animalesService.saveAnimal(this.animalesForm.value).subscribe(dato => {
+      Swal.fire('Animal guardado con éxito');
       this.animalesForm.reset();
       this.irALaListaDeAnimales();
     },

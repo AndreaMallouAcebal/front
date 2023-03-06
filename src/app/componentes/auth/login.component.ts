@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { UserLogin } from 'src/app/models/login/login-usuario';
 import { AuthService } from 'src/app/services/seguridad/auth.service';
 import { TokenService } from 'src/app/services/seguridad/token.service';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -44,9 +43,11 @@ export class LoginComponent implements OnInit {
         this.tokenService.setEmail(data.userEmail);
         this.tokenService.setAuthorities(data.authorities);
         this.rol = data.authorities[0];
+        
         this.router.navigate(['/']).then(() => {
           window.location.reload();
         });
+        
       },
       err => {
         this.isLogged = false;

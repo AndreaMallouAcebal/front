@@ -7,6 +7,8 @@ import { Usuario } from 'src/app/models/usuario/usuario';
 import { AnimalesService } from 'src/app/services/animales/animales.service';
 import { CitasService } from 'src/app/services/citas/citas.service';
 import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';
+//ventanas emegentes
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-editar-cita',
@@ -51,6 +53,7 @@ export class EditarCitaComponent {
 
   guardarCita(cita: Cita) {
     this.citasService.updateCita(cita).subscribe(dato => {
+      Swal.fire('Cita editada con éxito');
       this.citasForm.reset();
       this.irALaListaDeCitas();
     },

@@ -5,6 +5,8 @@ import { Rol } from 'src/app/models/rol/rol';
 import { Usuario } from 'src/app/models/usuario/usuario';
 import { RolesService } from 'src/app/services/roles/roles.service';
 import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';
+//ventanas emegentes
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registrar-usuario',
@@ -46,6 +48,7 @@ private obtenerRoles(){
 
 guardarUsuario(usuario : Usuario){
   this.usuariosService.saveUsuario(usuario).subscribe(dato => {
+    Swal.fire('Usuario registrado con éxito');
     this.usuariosForm.reset();
     this.irALaListaDeUsuarios();
   },

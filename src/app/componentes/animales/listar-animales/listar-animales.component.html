@@ -45,7 +45,7 @@
                       <div class="card-body">
                           <h5 class="card-title">{{animal.nombre}}</h5>
                           <button *ngIf="isAdmin" type="button" class="btn btn-sm btn-outline-secondary" routerLink="{{animal.id}}">Editar</button>
-                          <button *ngIf="isAdmin" type="button" (click)="onClickEliminar(animal.id)" class="btn btn-sm btn-outline-secondary">Eliminar</button>
+                          <button *ngIf="isAdmin" type="button" (click)="onClickEliminarAnimal(animal.id)" class="btn btn-sm btn-outline-secondary">Eliminar</button>
                       </div>
                   </div>
              </div>

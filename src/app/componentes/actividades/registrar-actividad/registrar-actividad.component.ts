@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Actividad } from 'src/app/models/actividad/actividad';
 import { ActividadesService } from 'src/app/services/actividades/actividades.service';
+//ventanas emegentes
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registrar-actividad',
@@ -29,6 +31,7 @@ export class RegistrarActividadComponent {
 
   guardarActividad(){
     this.actividadesService.saveActividad(this.actividadesForm.value).subscribe(dato => {
+      Swal.fire('Actividad guardada con éxito')
       this.actividadesForm.reset();
       this.irALaListaDeActividades();
     },

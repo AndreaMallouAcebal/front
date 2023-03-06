@@ -7,6 +7,8 @@ import { Usuario } from 'src/app/models/usuario/usuario';
 import { ActividadesService } from 'src/app/services/actividades/actividades.service';
 import { ActividadesusuariosService } from 'src/app/services/actividadesusuarios/actividadesusuarios.service';
 import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';
+//ventanas emegentes
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-editar-actividad',
@@ -47,6 +49,7 @@ export class EditarActividadComponent {
 
   guardarActividad(actividad: Actividad) {
     this.actividadesService.updateActividad(actividad).subscribe(dato => {
+      Swal.fire('Actividad editada con éxito')
       this.actividadesForm.reset();
       this.irALaListaDeActividades();
     },

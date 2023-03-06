@@ -7,6 +7,8 @@ import { Usuario } from 'src/app/models/usuario/usuario';
 import { CitasService } from 'src/app/services/citas/citas.service';
 import { RolesService } from 'src/app/services/roles/roles.service';
 import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';
+//ventanas emegentes
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-editar-usuario',
@@ -61,6 +63,7 @@ export class EditarUsuarioComponent {
 
   guardarUsuario(usuario : Usuario){
     this.usuariosService.updateUsuario(usuario).subscribe(dato => {
+      Swal.fire('Usuario editado con éxito');
       this.usuariosForm.reset();
       this.irALaListaDeUsuarios();
     },

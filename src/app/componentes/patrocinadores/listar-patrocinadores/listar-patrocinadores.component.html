@@ -1,25 +1,31 @@
-<h2>Lista citas</h2>
-<table class="table table-striped">
-    <thead class="table-dark">
+<div class="contenedor">
+  <div class="card">
+    <p-table [value]="patrocinadores" [tableStyle]="{'min-width': '50rem'}">
+      <ng-template pTemplate="caption">
+         <span>Lista de patrocinadores</span>
+         <button routerLink="/registrar-cita" id="nueva" style="margin-right: 20px;" pButton class="p-button-rounded p-button-success mr-2">Nuevo patrocinador</button>
+      </ng-template>
+      <ng-template pTemplate="header" >
         <tr>
             <th>Id</th>
             <th>Nombre</th>
             <th>Imagen</th>
             <th>Acciones</th>
         </tr>
-    </thead>
-      <tbody class="table-dark">
-        <tr *ngFor="let patrocinador of patrocinadores">
+      </ng-template>
+      <ng-template pTemplate="body" let-patrocinador>
+        <tr>
             <td>{{patrocinador.id}}</td>
             <td>{{patrocinador.nombre}}</td>
             <td>{{patrocinador.imagen}}</td>
           <td>
-            <button type="button" routerLink="{{patrocinador.id}}" class="btn btn-success" >Editar</button>
-            <button type="button" class="btn btn-danger" (click)="onClickEliminar(patrocinador.id)">Eliminar</button>
+            <button routerLink="{{patrocinador.id}}" style="margin-right: 20px;" pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
+            <button pButton id="eliminarT" pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="onClickEliminarPatrocinador(patrocinador.id)"></button>
           </td>
         </tr>
-      </tbody>
-</table>
-<router-outlet></router-outlet> 
-  
+      </ng-template>
+    </p-table>
+ </div>
+ </div>
+ <router-outlet></router-outlet>
   

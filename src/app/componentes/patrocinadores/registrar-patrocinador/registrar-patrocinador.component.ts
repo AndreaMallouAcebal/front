@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Patrocinador } from 'src/app/models/patrocinador/patrocinador';
 import { PatrocinadoresService } from 'src/app/services/patrocinadores/patrocinadores.service';
+//ventanas emegentes
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registrar-patrocinador',
@@ -28,6 +30,7 @@ export class RegistrarPatrocinadorComponent {
 
   guardarPatrocinador(){
     this.patrocinadoresService.savePatrocinador(this.patrocinadoresForm.value).subscribe(dato => {
+      Swal.fire('Patrocinador editado con éxito');
       this.patrocinadoresForm.reset();
       this.irALaListaDePatrocinadores();
     },
