@@ -20,6 +20,9 @@ export class CitasService {
   }
 
   //método para registrar animal
+  public saveCitaWithEmail(cita: Cita, email: string): Observable<Cita>{
+    return this.http.post<Cita>(this.citaUrl+ '/' + email, cita);
+  } 
   public saveCita(cita: Cita): Observable<Cita>{
     return this.http.post<Cita>(this.citaUrl, cita);
   } 

@@ -21,6 +21,7 @@ export class ListarActividadesComponent {
   actividadesusuarios:Actividadusuario[];
   actividadusuario: Actividadusuario;
   isAdmin = false;
+  isLogged = false;
 
   constructor(
     public fb: FormBuilder,
@@ -36,6 +37,12 @@ export class ListarActividadesComponent {
     this.obtenerActividadesUsuarios();
     this.obtenerActividades();
 
+    if(this.tokenService.getToken()){
+      this.isLogged = true;
+    }else {
+      this.isLogged = false;
+    }
+    
     if(this.tokenService.getAuthorities() === 'ADMIN'){
       this.isAdmin = true;
     }

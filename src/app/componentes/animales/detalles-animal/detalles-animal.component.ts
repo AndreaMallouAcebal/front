@@ -20,11 +20,12 @@ export class DetallesAnimalComponent {
   id: number = this.activateRouter.snapshot.params['id'];
   animal: Animal = new Animal();
   public animalesForm: FormGroup;
-
   cita: Cita = new Cita();
   public citasForm: FormGroup;
   usuario: Usuario;
   email:string;
+  isLogged = false;
+
 
   constructor(
     private activateRouter: ActivatedRoute,
@@ -43,14 +44,6 @@ export class DetallesAnimalComponent {
       err => console.log(err)
     );
 
-    //recuperamos el email
-    //this.email=this.tokenService.getEmail();
-    
-    // this.usuariosService.getUsuariolEmail(this.email).subscribe(
-    //   res=>{this.usuario=res},
-    //   err=>console.log(err)
-    // );
-
     this.animalesForm = this.fb.group({
       nombre: ['', Validators.required],
       edad: ['', Validators.required],
@@ -66,25 +59,25 @@ export class DetallesAnimalComponent {
       usuario_id: ['', Validators.required]
     });
 
-    this.setUsuarioCita();
-    this.setAnimalCita();
+    if(this.tokenService.getToken()){
+      this.isLogged = true;
+    }else {
+      this.isLogged = false;
+    }
 
-    console.log(this.cita)
   }
 
   guardarCita() {
-    this.citasService.saveCita(this.cita).subscribe(
+    this.email = this.tokenService.getEmail();
+    this.setAnimalCita();
+    this.citasService.saveCitaWithEmail(this.cita, this.email).subscribe(
       error => { console.error(error) }
     );
+    this.irALaListaDeAnimales();
   }
 
   irALaListaDeAnimales() {
     this.router.navigate(['/animales']);
-  }
-
-
-  setUsuarioCita() {
-    this.cita.usuario = this.usuario;
   }
 
   setAnimalCita() {

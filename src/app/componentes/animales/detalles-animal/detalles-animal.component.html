@@ -39,8 +39,8 @@
                     <div class="card-body">
                         <h5 class="card-title">{{animal.nombre}}</h5>
                         <form [formGroup]="citasForm"><br>
-                        <input type="date" [(ngModel)]="cita.fecha" name="fecha" id="fecha" formControlName="fecha" class="form-control">
-                        <button type="button" class="btn btn-sm btn-outline-secondary" routerLink="/animales" (click)="guardarCita()">Pedir cita</button>
+                        <input *ngIf="isLogged" type="date" [(ngModel)]="cita.fecha" name="fecha" id="fecha" formControlName="fecha" class="form-control">
+                        <button *ngIf="isLogged" type="button" class="btn btn-sm btn-outline-secondary" (click)="guardarCita()">Pedir cita</button>
                         </form>
                     </div>
                 </div>

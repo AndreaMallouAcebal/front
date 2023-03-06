@@ -18,7 +18,7 @@
         <button *ngIf="isAdmin" type="button" class="btn btn-sm btn-outline-secondary" routerLink="{{actividad.id}}">Editar</button>
         <button *ngIf="isAdmin" type="button" (click)="onClickEliminarActividad(actividad.id)"
           class="btn btn-sm btn-outline-secondary">Eliminar</button>
-        <button type="button" (click)="onClickApuntarse(actividad.id)"
+        <button *ngIf="isLogged" type="button" (click)="onClickApuntarse(actividad.id)"
           class="btn btn-sm btn-outline-secondary">Apuntarse</button>
         <button *ngIf="isAdmin" type="button" (click)="onClickVerUsuarios(actividad.id)" class="btn btn-sm btn-outline-secondary">Ver
           usuarios</button>
