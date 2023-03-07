@@ -76,7 +76,7 @@ export class DetallesAnimalComponent {
     );
     this.irALaListaDeAnimales();
   }
-  onClickguardarCita() {
+  onClickGuardarCita() {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success',

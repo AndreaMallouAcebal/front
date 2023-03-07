@@ -1,35 +1,21 @@
-body {
-  background-color:  #eee;
-}
-.title {
- 
-    margin-bottom: 50px;
-    text-transform: uppercase;
+.edad, .raza, .input{
+  margin-bottom: 3%;
 }
 
-.card-block {
-    font-size: 1em;
-    position: relative;
-    margin: 0;
-    padding: 1em;
-    border: none;
-    border-top: 1px solid rgba(34, 36, 38, .1);
-    box-shadow: none;
-     
+.nombre{
+  font-weight: bolder;
 }
-.card {
-    font-size: 1em;
-    overflow: hidden;
-    padding: 5;
-    border: none;
-    border-radius: .28571429rem;
-    box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
-    margin-top:20px;
+button{
+  margin-top:20%
 }
-img{
-  height: 400px;
-  object-fit: fill;
+#contenedor{
+  border-color: grey;
+  border-width: 0.003px ;
+  box-shadow: 5px;
+  padding: 5% 2% 5% 2%;
+  border-style: inset;
+  box-shadow: 30px 30px 2px 1px rgba(126, 126, 145, 0.2);
 }
-.btn {
-  margin-top: auto;
+hr{
+ color: gray;
 }

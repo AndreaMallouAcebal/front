@@ -1,29 +1,25 @@
-<div class="container py-3">
-  <div class="title h1 text-center">{{animal.nombre}}</div>
-  <!-- Card Start -->
-  <div class="card">
-    <div class="row ">
-
-      <div class="col-md-7 px-3">
-        <div class="card-block px-6">
-          <h3 class="card-title">{{animal.nombre}} - {{animal.raza}} </h3>
-          <h3 class="card-title"> {{animal.edad}} años </h3>
-          <p class="card-text">
-            {{animal.descripcion}}
-          </p>
-           <br>
-          <form [formGroup]="citasForm"><br>
-            <input *ngIf="isLogged" type="date" [(ngModel)]="cita.fecha" name="fecha" id="fecha" formControlName="fecha" class="form-control">
-            <button *ngIf="isLogged" type="submit" [disabled]="citasForm.invalid"  class="btn btn-sm btn-outline-secondary" (click)="onClickguardarCita()">Pedir cita</button>
-            </form>
-        </div>
+<section class="py-5">
+  <div class="container px-4 px-lg-5 my-5">
+      <div class="row gx-4 gx-lg-5 align-items-center" id="contenedor">
+          <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{animal.imagen}}" alt="foto animal" /></div>
+          <div class="col-md-6">   
+                   
+              <h1 class="nombre">{{animal.nombre}}</h1>
+              <hr>  
+              <div class="raza">
+                  <span >{{animal.raza}}</span>
+              </div>
+              <div class="edad">
+                <span >{{animal.edad}} años</span>
+            </div>
+              <p class="lead">{{animal.descripcion}}</p>
+              <div class="d-flex">
+                <form [formGroup]="citasForm"><br>
+                  <input class="input" *ngIf="isLogged" type="date" [(ngModel)]="cita.fecha" name="fecha" id="fecha" formControlName="fecha" class="form-control">
+                  <button *ngIf="isLogged" type="button" class="btn btn-sm btn-outline-secondary" [disabled]="citasForm.invalid" (click)="onClickGuardarCita()">Pedir cita</button>
+                  </form>
+              </div>
+          </div>
       </div>
-      <!-- Carousel start -->
-      <div class="col-md-5">
-        <img src="{{animal.imagen}}">
-      </div>
-      <!-- End of carousel -->
-    </div>
   </div>
-  <!-- End of card -->
-</div>
+</section>
