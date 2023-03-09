@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Cita } from 'src/app/models/cita/cita';
@@ -10,6 +10,8 @@ export class CitasService {
 
   private citaUrl="http://localhost:8080/citas";
 
+  private miCitaUrl="http://localhost:8080/mis-citas";
+
   constructor(
     private http:HttpClient
   ) { }
@@ -18,11 +20,15 @@ export class CitasService {
   public getAllCitas():Observable<Cita[]>{
     return this.http.get<Cita[]>(this.citaUrl);
   }
+  public getAllCitasUsuario(params: HttpParams):Observable<Cita[]>{
+    return this.http.post<Cita[]>(this.miCitaUrl,params);
+  }
 
   //método para registrar animal
   public saveCitaWithEmail(cita: Cita, email: string): Observable<Cita>{
     return this.http.post<Cita>(this.citaUrl+ '/' + email, cita);
   } 
+
   public saveCita(cita: Cita): Observable<Cita>{
     return this.http.post<Cita>(this.citaUrl, cita);
   } 
