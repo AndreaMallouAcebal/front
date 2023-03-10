@@ -18,7 +18,6 @@ import Swal from 'sweetalert2';
 })
 export class DetallesAnimalComponent {
   //recuperamos el id de la url 
-  //id:number=parseInt(window.location.pathname.substr(0).split('/')[2]);
   id: number = this.activateRouter.snapshot.params['id'];
   animal: Animal = new Animal();
   public animalesForm: FormGroup;
@@ -126,6 +125,5 @@ export class DetallesAnimalComponent {
   onSubmit(): void {
 
   }
-
 
 }

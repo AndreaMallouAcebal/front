@@ -1,5 +1,6 @@
-.edad, .raza, .input{
-  margin-bottom: 3%;
+.edad, .raza, .input, .descripcion{
+  margin-bottom: 4%;
+  margin-top: 7%;
 }
 
 .nombre{
@@ -17,5 +18,24 @@ button{
   box-shadow: 30px 30px 2px 1px rgba(126, 126, 145, 0.2);
 }
 hr{
- color: gray;
+ color: darkgrey;
+}
+a{
+  margin-left: 5%;
+  font-size: 20px;
+}
+img{
+  height: 500px;
+  object-fit: cover;
+  align-items: center;
+}
+svg{
+  color:gray;
+}
+span, .descripcion, .label{
+  font-size: 18px;
+  text-align: justify;
+}
+.label{
+  font-weight: bolder;
 }

@@ -19,12 +19,12 @@
                     <div class="form-group">
                       <label for="userEmail">Email del Usuario</label>
                       <input type="text" name="userEmail" id="userEmail" class="form-control"
-                      [(ngModel)]="userEmail" required>
+                      [(ngModel)]="userEmail" required pInputText>
                     </div>
                     <div class="form-group">
                       <label for="contrasenia">Contraseña</label>
                       <input type="password" name="contrasenia" id="contrasenia" class="form-control"
-                      [(ngModel)]="contrasenia" required>
+                      [(ngModel)]="contrasenia" required pInputText>
                     </div>
                     <div class="form-group">
                       <button class="btn btn-outline-success btn-block" [disabled]="!f.valid"> Iniciar sesion</button>

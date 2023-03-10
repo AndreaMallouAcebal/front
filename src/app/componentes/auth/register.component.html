@@ -19,27 +19,27 @@
                 <div class="form-group">
                   <label for="nombre">Nombre del Usuario</label>
                   <input type="text" name="nombre" id="nombre" class="form-control"
-                  [(ngModel)]="nombre" required>
+                  [(ngModel)]="nombre" required pInputText>
                 </div>
                 <div class="form-group">
                   <label for="apellidos">Apellidos del Usuario</label>
                   <input type="text" name="apellidos" id="apellidos" class="form-control"
-                  [(ngModel)]="apellidos" required>
+                  [(ngModel)]="apellidos" required pInputText>
                 </div>
                 <div class="form-group">
                   <label for="dni">DNI del Usuario</label>
                   <input type="text" name="dni" id="dni" class="form-control"
-                  [(ngModel)]="dni" required>
+                  [(ngModel)]="dni" required pInputText>
                 </div>
                   <div class="form-group">
                     <label for="userEmail">Email del Usuario</label>
                     <input type="text" name="userEmail" id="userEmail" class="form-control"
-                    [(ngModel)]="userEmail" required>
+                    [(ngModel)]="userEmail" required pInputText>
                   </div>
                   <div class="form-group">
                     <label for="contrasenia">Contraseña</label>
                     <input type="password" name="contrasenia" id="contrasenia" class="form-control"
-                    [(ngModel)]="contrasenia" required>
+                    [(ngModel)]="contrasenia" required pInputText>
                   </div>
                   <div class="form-group">
                     <button class="btn btn-outline-success btn-block" [disabled]="!f.valid">Crear cuenta</button>

@@ -29,8 +29,6 @@ import { NgImageSliderModule } from 'ng-image-slider';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PieComponent } from './componentes/pie/pie.component';
 import { BarraNavegacionComponent } from './componentes/barra-navegacion/barra-navegacion.component';
-import { RegistroComponent } from './componentes/registro/registro.component';
-import { InicioSesionComponent } from './componentes/inicio-sesion/inicio-sesion.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ContactoComponent } from './componentes/contacto/contacto.component';
 import { LoginComponent } from './componentes/auth/login.component';
@@ -40,6 +38,8 @@ import {ButtonModule} from 'primeng/button';
 import { DetallesAnimalComponent } from './componentes/animales/detalles-animal/detalles-animal.component';
 import {PanelModule} from 'primeng/panel';
 import { RegisterComponent } from './componentes/auth/register.component';
+import {InputTextModule} from 'primeng/inputtext';
+import { VerUsuariosComponent } from './componentes/actividades/ver-usuarios/ver-usuarios.component';
 
 
 @NgModule({
@@ -67,12 +67,11 @@ import { RegisterComponent } from './componentes/auth/register.component';
     CarruselComponent,
     PieComponent,
     BarraNavegacionComponent,
-    RegistroComponent,
-    InicioSesionComponent,
     ContactoComponent,
     LoginComponent,
     RegisterComponent,
     DetallesAnimalComponent,
+    VerUsuariosComponent,
   ],
   imports: [
     BrowserModule,
@@ -86,7 +85,8 @@ import { RegisterComponent } from './componentes/auth/register.component';
     MatSlideToggleModule,
     TableModule,
     ButtonModule,
-    PanelModule
+    PanelModule,
+    InputTextModule
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]

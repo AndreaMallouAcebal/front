@@ -82,10 +82,6 @@ export class ListarActividadesComponent {
     );
   }
 
-  onClickVerUsuarios(id:number){
-
-  }
-
   confirmarApuntarse(id: number ){
     let params = new HttpParams()
       .set('userEmail', this.tokenService.getEmail())

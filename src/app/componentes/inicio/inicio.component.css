@@ -21,13 +21,14 @@ h2{
 
 p{
   margin-top: 5%;
-  margin-bottom: 5%;
+  margin-bottom: 1%;
   text-align: justify;
   font-size:1vw;
 }
 
 h4{
-  padding:  0% 0% 4% 1%;
+  text-align: left;
+  padding:  6% 0% 4% 1%;
   color: dimgray
 }
 #animalesid:hover{

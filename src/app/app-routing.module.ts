@@ -1,9 +1,9 @@
-import { registerLocaleData } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EditarActividadComponent } from './componentes/actividades/editar-actividad/editar-actividad.component';
 import { ListarActividadesComponent } from './componentes/actividades/listar-actividades/listar-actividades.component';
 import { RegistrarActividadComponent } from './componentes/actividades/registrar-actividad/registrar-actividad.component';
+import { VerUsuariosComponent } from './componentes/actividades/ver-usuarios/ver-usuarios.component';
 import { DetallesAnimalComponent } from './componentes/animales/detalles-animal/detalles-animal.component';
 import { EditarAnimalComponent } from './componentes/animales/editar-animal/editar-animal.component';
 import { ListarAnimalesComponent } from './componentes/animales/listar-animales/listar-animales.component';
@@ -14,12 +14,10 @@ import { EditarCitaComponent } from './componentes/citas/editar-cita/editar-cita
 import { ListarCitasComponent } from './componentes/citas/listar-citas/listar-citas.component';
 import { RegistrarCitaComponent } from './componentes/citas/registrar-cita/registrar-cita.component';
 import { ContactoComponent } from './componentes/contacto/contacto.component';
-import { InicioSesionComponent } from './componentes/inicio-sesion/inicio-sesion.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
 import { EditarPatrocinadorComponent } from './componentes/patrocinadores/editar-patrocinador/editar-patrocinador.component';
 import { ListarPatrocinadoresComponent } from './componentes/patrocinadores/listar-patrocinadores/listar-patrocinadores.component';
 import { RegistrarPatrocinadorComponent } from './componentes/patrocinadores/registrar-patrocinador/registrar-patrocinador.component';
-import { RegistroComponent } from './componentes/registro/registro.component';
 import { EditarRolComponent } from './componentes/roles/editar-rol/editar-rol.component';
 import { ListarRolesComponent } from './componentes/roles/listar-roles/listar-roles.component';
 import { RegistrarRolComponent } from './componentes/roles/registrar-rol/registrar-rol.component';
@@ -39,9 +37,6 @@ const routes: Routes = [
     path: 'register', component: RegisterComponent
   },
   {
-    path: 'welcome', component: InicioSesionComponent
-  },
-  {
     path: '', redirectTo:'inicio', pathMatch:'full'
   },
   {
@@ -55,6 +50,9 @@ const routes: Routes = [
   },
   {
     path: 'detalles-animal/:id', component: DetallesAnimalComponent
+  },
+  {
+    path: 'ver-usuarios/:id', component: VerUsuariosComponent
   },
   {
     path: 'citas', component: ListarCitasComponent
@@ -102,14 +100,8 @@ const routes: Routes = [
     path: 'actividades/:id', component: EditarActividadComponent, canActivate: [guard], data: {expectedRol: ['ADMIN']}
   },
   {
-    path: 'registro', component: RegistroComponent
-  },
-  {
     path: 'contacto', component: ContactoComponent
-  },
-  {
-    path: 'inicio-sesion', component: InicioSesionComponent
-  },
+  }
 
 ];
 
