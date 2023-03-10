@@ -10,7 +10,6 @@ import { RegistrarAnimalComponent } from './componentes/animales/registrar-anima
 import { EditarAnimalComponent } from './componentes/animales/editar-animal/editar-animal.component';
 import { ListarCitasComponent } from './componentes/citas/listar-citas/listar-citas.component';
 import { EditarCitaComponent } from './componentes/citas/editar-cita/editar-cita.component';
-import { RegistrarCitaComponent } from './componentes/citas/registrar-cita/registrar-cita.component';
 import { ListarUsuariosComponent } from './componentes/usuarios/listar-usuarios/listar-usuarios.component';
 import { EditarUsuarioComponent } from './componentes/usuarios/editar-usuario/editar-usuario.component';
 import { RegistrarUsuarioComponent } from './componentes/usuarios/registrar-usuario/registrar-usuario.component';
@@ -38,6 +37,8 @@ import {ButtonModule} from 'primeng/button';
 import { DetallesAnimalComponent } from './componentes/animales/detalles-animal/detalles-animal.component';
 import {PanelModule} from 'primeng/panel';
 import { RegisterComponent } from './componentes/auth/register.component';
+import { RegistrarCitaComponent } from './componentes/citas/registrar-cita/registrar-cita.component';
+import { ListarMisCitasComponent } from './componentes/citas/listar-mis-citas/listar-mis-citas.component';
 import {InputTextModule} from 'primeng/inputtext';
 import { VerUsuariosComponent } from './componentes/actividades/ver-usuarios/ver-usuarios.component';
 
@@ -67,6 +68,9 @@ import { VerUsuariosComponent } from './componentes/actividades/ver-usuarios/ver
     CarruselComponent,
     PieComponent,
     BarraNavegacionComponent,
+    RegistroComponent,
+    ListarMisCitasComponent,
+    InicioSesionComponent,
     ContactoComponent,
     LoginComponent,
     RegisterComponent,

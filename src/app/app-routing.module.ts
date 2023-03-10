@@ -12,6 +12,7 @@ import { LoginComponent } from './componentes/auth/login.component';
 import { RegisterComponent } from './componentes/auth/register.component';
 import { EditarCitaComponent } from './componentes/citas/editar-cita/editar-cita.component';
 import { ListarCitasComponent } from './componentes/citas/listar-citas/listar-citas.component';
+import { ListarMisCitasComponent } from './componentes/citas/listar-mis-citas/listar-mis-citas.component';
 import { RegistrarCitaComponent } from './componentes/citas/registrar-cita/registrar-cita.component';
 import { ContactoComponent } from './componentes/contacto/contacto.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
@@ -56,6 +57,9 @@ const routes: Routes = [
   },
   {
     path: 'citas', component: ListarCitasComponent
+  },
+  {
+    path: 'mis-citas', component: ListarMisCitasComponent
   },
   {
     path: 'registrar-cita', component: RegistrarCitaComponent, canActivate: [guard], data: {expectedRol: ['ADMIN']}
