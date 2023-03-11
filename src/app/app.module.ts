@@ -12,7 +12,6 @@ import { ListarCitasComponent } from './componentes/citas/listar-citas/listar-ci
 import { EditarCitaComponent } from './componentes/citas/editar-cita/editar-cita.component';
 import { ListarUsuariosComponent } from './componentes/usuarios/listar-usuarios/listar-usuarios.component';
 import { EditarUsuarioComponent } from './componentes/usuarios/editar-usuario/editar-usuario.component';
-import { RegistrarUsuarioComponent } from './componentes/usuarios/registrar-usuario/registrar-usuario.component';
 import { ListarRolesComponent } from './componentes/roles/listar-roles/listar-roles.component';
 import { EditarRolComponent } from './componentes/roles/editar-rol/editar-rol.component';
 import { RegistrarRolComponent } from './componentes/roles/registrar-rol/registrar-rol.component';
@@ -54,7 +53,6 @@ import { VerUsuariosComponent } from './componentes/actividades/ver-usuarios/ver
     RegistrarCitaComponent,
     ListarUsuariosComponent,
     EditarUsuarioComponent,
-    RegistrarUsuarioComponent,
     ListarRolesComponent,
     EditarRolComponent,
     RegistrarRolComponent,
@@ -68,9 +66,7 @@ import { VerUsuariosComponent } from './componentes/actividades/ver-usuarios/ver
     CarruselComponent,
     PieComponent,
     BarraNavegacionComponent,
-    RegistroComponent,
     ListarMisCitasComponent,
-    InicioSesionComponent,
     ContactoComponent,
     LoginComponent,
     RegisterComponent,

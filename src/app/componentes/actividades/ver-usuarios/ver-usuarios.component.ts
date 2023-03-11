@@ -32,35 +32,18 @@ export class VerUsuariosComponent {
 
   ngOnInit() {
 
-    //asignamos al objeto animal los datos enviando el id recuperado
-    this.actividadesService.getActividadId(this.id).subscribe(
-      res => { this.actividad = res },
-      err => console.log(err)
-    );
-    console.log(this.actividad)
+     this.actividadesService.getActividadId(this.id).subscribe(
+       res => { this.actividad = res },
+       err => console.log(err)
+     );
+     console.log(this.actividad)
 
     //recuperamos todas las actividadesusuario
-    this.actividadesUsuariosService.getAllActividadesusuarios().subscribe(
+    this.actividadesUsuariosService.getAllActividadesusuariosByActividad(this.id).subscribe(
       res => { this.actividadesusuarios = res },
       err => console.log(err)
     );
-
-
-    //filtramos usuariosactividades
-   this.actividadesusuarios = this.actividadesusuarios.filter(
-       a => a.actividad.id = this.id,
-   )
-    
-    let id;
-    //filtramos usuarios
-    for (let i = 0; i < this.actividadesusuarios.length; i++) {
-
-      id = this.actividadesusuarios[i].usuario.id
-      this.usuariosService.getUsuariolId(id).subscribe(
-        p => { this.usuarios.push(p)},
-        err => console.log(err)
-      )
-    }
+    console.log(this.actividadesusuarios)
   }
 }
 

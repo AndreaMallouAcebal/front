@@ -11,7 +11,7 @@
       <ng-template pTemplate="content">
         {{actividad.descripcion}}
         <hr>
-        <p>Fecha: {{actividad.fecha}}</p>
+        <p>Fecha: {{actividad.fecha|date: 'dd/MM/yyyy'}}</p>
 
       </ng-template>
       <ng-template pTemplate="footer">

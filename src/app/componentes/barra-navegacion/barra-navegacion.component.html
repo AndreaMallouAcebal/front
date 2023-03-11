@@ -18,7 +18,7 @@
           <li class="nav-item" *ngIf="isAdmin">
             <a class="nav-link" href="citas">Citas</a>
           </li>
-          <li class="nav-item" *ngIf="isLogged">
+          <li class="nav-item" *ngIf="isLogged && !isAdmin">
             <a class="nav-link" href="mis-citas">Mis Citas</a>
           </li>
           <li class="nav-item" *ngIf="isAdmin">
@@ -33,7 +33,7 @@
           <a class="navbar-brand" href="login">Iniciar sesion</a>
         </li>
         <li class="nav-item" *ngIf="isLogged" (click)="onLogOut()">
-          <a style="cursor: pointer;" class="navbar-brand" >Cerrar sesion</a>
+          <a style="cursor: pointer;" class="navbar-brand"><u>{{emailUsuario}}</u></a>
         </li>
       </ul>
       </div>

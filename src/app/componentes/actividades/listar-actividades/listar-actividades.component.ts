@@ -40,7 +40,7 @@ export class ListarActividadesComponent {
   ngOnInit(): void{
     //Llamamos a los métodos para cargar los arrays con la base de datos
     // this.obtenerUsuarios();
-    this.obtenerActividadesUsuarios();
+    // this.obtenerActividadesUsuarios();
     this.obtenerActividades();
 
     if(this.tokenService.getToken()){
@@ -54,20 +54,20 @@ export class ListarActividadesComponent {
     }
   }
 
-  //método para cargar los usuarios
-  private obtenerUsuarios(){    
-    this.usuariosService.getAllUsuarios().subscribe(dato=>{
-      this.usuarios= dato;
-    });
-    this.usuario=this.usuarios[0];
-  }
+  // //método para cargar los usuarios
+  // private obtenerUsuarios(){    
+  //   this.usuariosService.getAllUsuarios().subscribe(dato=>{
+  //     this.usuarios= dato;
+  //   });
+  //   this.usuario=this.usuarios[0];
+  // }
 
-  //método para cargar los usuarios
-  private obtenerActividadesUsuarios(){    
-    this.actividadesusuariosService.getAllActividadesusuarios().subscribe(dato=>{
-      this.actividadesusuarios = dato;
-    });
-  }
+  // //método para cargar los usuarios
+  // private obtenerActividadesUsuarios(){    
+  //   this.actividadesusuariosService.getAllActividadesusuarios().subscribe(dato=>{
+  //     this.actividadesusuarios = dato;
+  //   });
+  // }
 
   //método para cargar las actividades
   private obtenerActividades(){

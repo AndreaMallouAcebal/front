@@ -4,30 +4,49 @@
     width: 100%;
     height: 500px;
     opacity: 0.3;
+}.edad, .raza, .input, .descripcion{
+  margin-bottom: 4%;
+  margin-top: 7%;
 }
-h2{
-    padding: 4%;
-    text-align: center;
-    color: rgb(53, 53, 53)
-  }
 
-  div{
-    align-items: center;
-  }
-  .column
-{
-    width: 45%;
-    font-size: 22px;
-    line-height: 4;
-
+.nombre{
+  font-weight: bolder;
 }
-.container{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
+button{
+  margin-top:20%
 }
-img{
-  width: 100%;
-  opacity: 0.8;
+#contenedor{
+  border-color: grey;
+  border-width: 0.003px ;
+  box-shadow: 5px;
+  padding: 5% 2% 5% 2%;
+  border-style: inset;
+  box-shadow: 30px 30px 2px 1px rgba(126, 126, 145, 0.2);
+}
+hr{
+ color: darkgrey;
+}
+a{
+  margin-left: 5%;
+  font-size: 20px;
+}
+#mapa{
+  height: 500px;
+  object-fit: cover;
+  align-items: center;
+}
+svg{
+  color:gray;
+}
+span, .descripcion, .label{
+  font-size: 18px;
+  text-align: justify;
+}
+.label{
+  font-weight: bolder;
+}
+#datos{
+  height: 500px;
+  object-fit: cover;
+  align-items: center;
 }

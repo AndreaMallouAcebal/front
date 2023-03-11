@@ -11,6 +11,8 @@ export class ActividadesusuariosService {
  
   private actividadusuarioUrl="http://localhost:8080/actividadesusuarios";
 
+  private verusuariosUrl="http://localhost:8080/ver-usuarios"
+
   
 
   constructor(
@@ -20,6 +22,9 @@ export class ActividadesusuariosService {
   //método para obtener los empleados
   public getAllActividadesusuarios():Observable<Actividadusuario[]>{
     return this.http.get<Actividadusuario[]>(this.actividadusuarioUrl);
+  }
+  public getAllActividadesusuariosByActividad(id:number):Observable<Actividadusuario[]>{
+    return this.http.get<Actividadusuario[]>(this.verusuariosUrl + '/' + id);
   }
 
   //método para registrar animal

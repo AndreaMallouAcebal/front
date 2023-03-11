@@ -18,7 +18,7 @@
         <ng-template pTemplate="body" let-cita>
              <tr>
           <td>{{cita.id}}</td>
-          <td>{{cita.fecha}}</td>
+          <td>{{cita.fecha|date: 'dd/MM/yyyy'}}</td>
           <td>
             <a routerLink="../animales/{{cita.animal.id}}"> {{cita.animal.nombre}}</a>
           </td>

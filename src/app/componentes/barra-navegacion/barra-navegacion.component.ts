@@ -10,6 +10,7 @@ export class BarraNavegacionComponent {
 
 isLogged=false;
 isAdmin=false;
+emailUsuario : string;
 
 constructor (private tokenService: TokenService) {}
 
@@ -22,6 +23,7 @@ ngOnInit(){
   if(this.tokenService.getAuthorities() === 'ADMIN'){
     this.isAdmin = true;
   }
+  this.emailUsuario = this.tokenService.getEmail();
 }
 
 onLogOut(): void {
