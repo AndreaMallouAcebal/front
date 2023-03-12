@@ -42,6 +42,7 @@ import {InputTextModule} from 'primeng/inputtext';
 import { VerUsuariosComponent } from './componentes/actividades/ver-usuarios/ver-usuarios.component';
 import { MiPerfilComponent } from './componentes/mi-perfil/mi-perfil.component';
 import {MenubarModule} from 'primeng/menubar';
+import { DetallesActividadComponent } from './componentes/actividades/detalles-actividad/detalles-actividad.component';
 
 
 @NgModule({
@@ -75,6 +76,7 @@ import {MenubarModule} from 'primeng/menubar';
     DetallesAnimalComponent,
     VerUsuariosComponent,
     MiPerfilComponent,
+    DetallesActividadComponent,
 
   ],
   imports: [

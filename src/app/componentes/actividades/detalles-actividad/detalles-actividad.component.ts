@@ -1,7 +1,7 @@
 import { HttpParams } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Actividad } from 'src/app/models/actividad/actividad';
 import { Actividadusuario } from 'src/app/models/actividadusuario/actividadusuario';
 import { Usuario } from 'src/app/models/usuario/usuario';
@@ -9,35 +9,53 @@ import { ActividadesService } from 'src/app/services/actividades/actividades.ser
 import { ActividadesusuariosService } from 'src/app/services/actividadesusuarios/actividadesusuarios.service';
 import { TokenService } from 'src/app/services/seguridad/token.service';
 import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';
-//ventanas emegentes
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-listar-actividades',
-  templateUrl: './listar-actividades.component.html',
-  styleUrls: ['./listar-actividades.component.css']
+  selector: 'app-detalles-actividad',
+  templateUrl: './detalles-actividad.component.html',
+  styleUrls: ['./detalles-actividad.component.css']
 })
-export class ListarActividadesComponent {
+export class DetallesActividadComponent {
+  //recuperamos el id de la url 
+  id: number = this.activateRouter.snapshot.params['id'];
+  actividadesusuarios: Actividadusuario[];
+  actividad: Actividad;
+  usuarios: Usuario[];
+  aus:Actividadusuario[];
   actividades:Actividad[];
-  actividad :Actividad;
   usuario:Usuario;
-  usuarios:Usuario[];
-  actividadesusuarios:Actividadusuario[];
   actividadusuario: Actividadusuario;
   isAdmin = false;
   isLogged = false;
   email: string;
 
   constructor(
-    public fb: FormBuilder,
+    private activateRouter: ActivatedRoute,
     private router: Router,
-    public actividadesService : ActividadesService,
-    public actividadesusuariosService : ActividadesusuariosService,
     public usuariosService: UsuariosService,
-    private tokenService: TokenService
-  ){}
+    public actividadesService: ActividadesService,
+    public actividadesUsuariosService: ActividadesusuariosService,
+    private tokenService: TokenService,
+    public fb: FormBuilder,
+  ) { }
 
-  ngOnInit(): void{
+  ngOnInit() {
+
+     this.actividadesService.getActividadId(this.id).subscribe(
+       res => { this.actividad = res },
+       err => console.log(err)
+     );
+     console.log(this.actividad)
+
+    //recuperamos todas las actividadesusuario
+    this.actividadesUsuariosService.getAllActividadesusuariosByActividad(this.id).subscribe(
+      res => { this.actividadesusuarios = res },
+      err => console.log(err)
+    );
+    console.log(this.actividadesusuarios)
+
+
     //Llamamos a los métodos para cargar los arrays con la base de datos
     // this.obtenerUsuarios();
     // this.obtenerActividadesUsuarios();
@@ -53,7 +71,7 @@ export class ListarActividadesComponent {
       this.isAdmin = true;
     }
   }
-
+  
   //método para cargar las actividades
   private obtenerActividades(){
     this.actividadesService.getAllActividades().subscribe(dato=>{
@@ -71,7 +89,7 @@ export class ListarActividadesComponent {
     let params = new HttpParams()
       .set('userEmail', this.tokenService.getEmail())
       .set('idActividad', id);
-    this.actividadesusuariosService.saveActividadWithEmail(params).subscribe(
+    this.actividadesUsuariosService.saveActividadWithEmail(params).subscribe(
       error => { console.error(error) }
     );
     this.irALaListaDeActividades(); 

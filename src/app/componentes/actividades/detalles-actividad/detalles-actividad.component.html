@@ -1,0 +1,32 @@
+
+
+<div class="container">
+    <div class="contenedor">
+      <p-panel>
+        <ng-template pTemplate="header">
+          <h3>{{actividad.nombre}}</h3>
+        </ng-template>
+  
+        <ng-template pTemplate="content">
+          <p>Fecha: {{actividad.fecha|date: 'dd/MM/yyyy'}}</p>
+          <hr>
+          <p>{{actividad.descripcion}}</p>
+  
+        </ng-template>
+        <ng-template pTemplate="footer">
+          <button *ngIf="isAdmin" type="button" pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" routerLink="/actividades/{{actividad.id}}"></button>
+          <button *ngIf="isAdmin" type="button" (click)="onClickEliminarActividad(actividad.id)"
+          pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"></button>
+          <button *ngIf="isLogged" type="button" (click)="onClickApuntarse(actividad.id)"
+            class="btn btn-sm btn-outline-secondary">Apuntarse</button>
+        </ng-template>
+      </p-panel>
+    </div>
+ 
+
+  <h2>Usuarios registradados a la actividad: {{actividad.nombre}} del día {{actividad.fecha}}</h2>
+<ul *ngFor="let au of actividadesusuarios">
+    <li>{{au.usuario.nombre}}</li>
+</ul>
+
+</div>

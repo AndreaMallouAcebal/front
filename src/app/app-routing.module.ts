@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { DetallesActividadComponent } from './componentes/actividades/detalles-actividad/detalles-actividad.component';
 import { EditarActividadComponent } from './componentes/actividades/editar-actividad/editar-actividad.component';
 import { ListarActividadesComponent } from './componentes/actividades/listar-actividades/listar-actividades.component';
 import { RegistrarActividadComponent } from './componentes/actividades/registrar-actividad/registrar-actividad.component';
@@ -53,7 +54,7 @@ const routes: Routes = [
     path: 'detalles-animal/:id', component: DetallesAnimalComponent
   },
   {
-    path: 'ver-usuarios/:id', component: VerUsuariosComponent
+    path: 'detalles-actividad/:id', component: DetallesActividadComponent
   },
   {
     path: 'citas', component: ListarCitasComponent
