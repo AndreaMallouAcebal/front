@@ -22,8 +22,10 @@
                     class="btn btn-sm btn-outline-secondary">Apuntarse</button>
                 <button *ngIf="isLogged&&isApuntado" type="button" (click)="onClickDesapuntarse(actividad.id)"
                     class="btn btn-sm btn-outline-secondary">Desapuntarse</button>
-                <div *ngIf="!isLogged" class="alert alert-danger mt-3">Registrese para pedir una cita</div>   
+                    <!-- alerta es necesario registrarse -->
+                <div *ngIf="!isLogged" class="alert alert-danger mt-3">Registrese para apuntarse a una actividad</div>   
             </ng-template>
+            <!-- alerta actividad no disponible -->
             <div *ngIf="isLogged&&isPasado" class="alert alert-danger mt-3">Esta actividad ya no está disponible</div>
         </p-panel>
     </div>
