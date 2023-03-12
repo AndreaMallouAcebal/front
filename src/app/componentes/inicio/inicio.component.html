@@ -1,7 +1,7 @@
 <app-carrusel></app-carrusel>
 
   <h2>¡Conoce a nuestros amigos!</h2>
-  <div class="container" >
+<div class="contenedor">
     <div class="for" *ngFor="let animal of animales"  >
             <div class="card"  style="width: 25rem; margin: 6px;">
                   <a routerLink="../detalles-animal/{{animal.id}}">  <img id="animalesid" [src]="animal.imagen" class="card-img-top" alt="animal"></a>
@@ -14,8 +14,8 @@
                 </div>
            </div>
     </div>
-    
   </div>
+
 <div class="container">
   <p>La Asociación "El amor no se compra" nace en 2023 con el objetivo de, en la medida de lo posible, ayudar en casos de desamparo y abandono de animales.
       Nuestras labores irán orientadas a: buscar casas de acogida, manutención, gastos veterinarios y tramitación de adopciones.</p>

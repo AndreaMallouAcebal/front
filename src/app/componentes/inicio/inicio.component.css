@@ -35,3 +35,7 @@ h4{
   opacity: 1;
   -webkit-transform:scale(1.1);transform:scale(1.1);
 }
+.contenedor{
+text-align: center !important;
+padding: 0% 0 2% 0;
+}

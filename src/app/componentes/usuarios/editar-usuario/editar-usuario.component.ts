@@ -64,7 +64,7 @@ export class EditarUsuarioComponent {
     this.usuariosService.updateUsuario(usuario).subscribe(dato => {
       Swal.fire('Usuario editado con éxito');
       this.usuariosForm.reset();
-      this.irALaListaDeUsuarios();
+      this.irAlPerfil();
     },
       error => { console.error(error) }
 
@@ -81,8 +81,8 @@ export class EditarUsuarioComponent {
     this.usuario.rol = this.rol;
   }
 
-  irALaListaDeUsuarios() {
-    this.router.navigate(['/usuarios']);
+  irAlPerfil() {
+    this.router.navigate(['/mi-perfil']);
   }
 
   onSubmit(): void {

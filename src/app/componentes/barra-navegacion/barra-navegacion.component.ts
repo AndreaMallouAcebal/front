@@ -37,4 +37,7 @@ onLogOut(): void {
   this.tokenService.logOut();
   window.location.reload();
 }
+actualizar(){
+  window.location.reload();
+}
 }
