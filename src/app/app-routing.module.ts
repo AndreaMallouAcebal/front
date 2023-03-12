@@ -108,7 +108,7 @@ const routes: Routes = [
     path: 'contacto', component: ContactoComponent
   },
   {
-    path: 'mi-perfil', component: MiPerfilComponent
+    path: 'mi-perfil', component: MiPerfilComponent ,canActivate: [guard], data: {expectedRol: ['ADMIN','USER']}
   }
 
 ];
