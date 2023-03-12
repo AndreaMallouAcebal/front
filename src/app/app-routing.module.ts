@@ -72,7 +72,7 @@ const routes: Routes = [
     path: 'usuarios', component: ListarUsuariosComponent, canActivate: [guard], data: {expectedRol: ['ADMIN']}
   },
   {
-    path: 'usuarios/:id', component: EditarUsuarioComponent, canActivate: [guard], data: {expectedRol: ['ADMIN']}
+    path: 'usuarios/:id', component: EditarUsuarioComponent, canActivate: [guard], data: {expectedRol: ['ADMIN','USER']}
   },
   {
     path: 'registrar-usuario', component: RegistrarUsuarioComponent, canActivate: [guard], data: {expectedRol: ['ADMIN']}
