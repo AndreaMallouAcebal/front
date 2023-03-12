@@ -71,7 +71,8 @@ export class DetallesAnimalComponent {
     this.email = this.tokenService.getEmail();
     this.setAnimalCita();
     this.citasService.saveCitaWithEmail(this.cita, this.email).subscribe(
-      error => { console.error(error) }
+      data => {},
+      error => { console.log(error.error) }
     );
     this.irALaListaDeAnimales();
   }

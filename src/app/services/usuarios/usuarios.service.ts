@@ -10,7 +10,7 @@ export class UsuariosService {
 
   private usuarioUrl="http://localhost:8080/usuarios";
   private usuarioAuth="http://localhost:8080/auth/new";
-  private miPerfilUrl="http://localhost:8080/auth/new";
+  private miPerfilUrl="http://localhost:8080/mi-perfil";
 
   constructor(
     private http:HttpClient

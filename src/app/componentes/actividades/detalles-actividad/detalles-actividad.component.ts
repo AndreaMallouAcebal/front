@@ -28,7 +28,8 @@ export class DetallesActividadComponent {
   actividadusuario: Actividadusuario;
   isAdmin = false;
   isLogged = false;
-  email: string;
+  isApuntado = false;
+  email : string;
 
   constructor(
     private activateRouter: ActivatedRoute,
@@ -45,16 +46,22 @@ export class DetallesActividadComponent {
      this.actividadesService.getActividadId(this.id).subscribe(
        res => { this.actividad = res },
        err => console.log(err)
-     );
-     console.log(this.actividad)
+
+       );
+
 
     //recuperamos todas las actividadesusuario
     this.actividadesUsuariosService.getAllActividadesusuariosByActividad(this.id).subscribe(
-      res => { this.actividadesusuarios = res },
+      res => { this.actividadesusuarios = res;
+        for(var au of this.actividadesusuarios){
+          console.log(au.usuario.email);
+          if(au.usuario.email === this.email){
+            this.isApuntado = true;
+          }
+        } },
       err => console.log(err)
     );
-    console.log(this.actividadesusuarios)
-
+    this.email = this.tokenService.getEmail();
 
     //Llamamos a los métodos para cargar los arrays con la base de datos
     // this.obtenerUsuarios();
@@ -70,6 +77,9 @@ export class DetallesActividadComponent {
     if(this.tokenService.getAuthorities() === 'ADMIN'){
       this.isAdmin = true;
     }
+
+    console.log(this.email);
+
   }
   
   //método para cargar las actividades
@@ -87,7 +97,7 @@ export class DetallesActividadComponent {
 
   confirmarApuntarse(id: number ){
     let params = new HttpParams()
-      .set('userEmail', this.tokenService.getEmail())
+      .set('userEmail', this.email)
       .set('idActividad', id);
     this.actividadesUsuariosService.saveActividadWithEmail(params).subscribe(
       error => { console.error(error) }
@@ -97,6 +107,13 @@ export class DetallesActividadComponent {
 
   irALaListaDeActividades() {
     this.router.navigate(['/actividades']);
+  }
+
+  onClickDesapuntarse(id: number) {
+    this.actividadesUsuariosService.deleteActividadusuario(id).subscribe(
+    error => { console.error(error) }
+    );
+    this.irALaListaDeActividades(); 
   }
 
 
