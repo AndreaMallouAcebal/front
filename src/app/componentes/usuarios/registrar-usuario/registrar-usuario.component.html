@@ -1,12 +1,12 @@
+
 <div class="col-md-6 offset-md-3">
-  <h3 class="text-center">Editar usuario</h3>
-  <form (ngSubmit)="onSubmit()" [formGroup]="usuariosForm"><br>
-    <div class="form-group">
-      <label>Nombre: </label>
-      <input type="text" [(ngModel)]="usuario.nombre" name="nombre" id="nombre" formControlName="nombre"
-        class="form-control">
-    </div><br>
-    <!--MENSAJE DE ERROR (REQUERIDO)-->
+    <h3 class="text-center">Registrar usuario</h3>
+    <form (ngSubmit)="onSubmit()" [formGroup]="usuariosForm"><br>
+      <div class="form-group">
+        <label>Nombre: </label>
+        <input type="text" [(ngModel)]="usuario.nombre" name="nombre" id="nombre" formControlName="nombre" class="form-control">
+      </div><br>
+       <!--MENSAJE DE ERROR (REQUERIDO)-->
     <div *ngIf="usuariosForm.get('nombre')?.invalid && usuariosForm.get('nombre')?.touched" class="alert alert-danger">
       El campo nombre no puede estar vacío y su longitud no puede exceder los 45 caracteres</div>
     <div class="form-group">
@@ -50,7 +50,6 @@
     <!--MENSAJE DE ERROR (REQUERIDO)-->
     <div *ngIf="usuariosForm.get('rol_id')?.invalid && usuariosForm.get('rol_id')?.touched" class="alert alert-danger">
       El campo rol no puede estar vacío</div>
-    <button type="submit" class="btn btn-success" [disabled]="usuariosForm.invalid"
-      (click)="guardarUsuario(usuario)">Guardar</button>
-  </form>
-</div><br>
+      <button type="submit" class="btn btn-success" [disabled]="usuariosForm.invalid">Guardar</button>
+    </form>
+  </div><br>

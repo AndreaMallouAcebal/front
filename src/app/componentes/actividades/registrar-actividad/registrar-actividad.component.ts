@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Actividad } from 'src/app/models/actividad/actividad';
 import { ActividadesService } from 'src/app/services/actividades/actividades.service';
@@ -23,9 +23,9 @@ export class RegistrarActividadComponent {
   ngOnInit() {
 
     this.actividadesForm = this.fb.group({
-      nombre: ['', Validators.required],
-      fecha: ['', Validators.required],
-      descripcion: ['', Validators.required],
+      nombre: new FormControl('', [Validators.required, Validators.maxLength(30)]),
+      fecha: new FormControl('', [Validators.required]),
+      descripcion: new FormControl('', [Validators.required, Validators.maxLength(600)])
     });
   }
 

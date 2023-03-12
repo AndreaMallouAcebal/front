@@ -1,10 +1,16 @@
+// estructura la aplicacion
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
-import { AppRoutingModule } from './app-routing.module';
+
+// componentes
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DetallesActividadComponent } from './componentes/actividades/detalles-actividad/detalles-actividad.component';
+import { MiPerfilComponent } from './componentes/mi-perfil/mi-perfil.component';
+import { RegisterComponent } from './componentes/auth/register.component';
+import { RegistrarCitaComponent } from './componentes/citas/registrar-cita/registrar-cita.component';
+import { ListarMisCitasComponent } from './componentes/citas/listar-mis-citas/listar-mis-citas.component';
+import { DetallesAnimalComponent } from './componentes/animales/detalles-animal/detalles-animal.component';
+import { ContactoComponent } from './componentes/contacto/contacto.component';
+import { LoginComponent } from './componentes/auth/login.component';
 import { ListarAnimalesComponent } from './componentes/animales/listar-animales/listar-animales.component';
 import { RegistrarAnimalComponent } from './componentes/animales/registrar-animal/registrar-animal.component';
 import { EditarAnimalComponent } from './componentes/animales/editar-animal/editar-animal.component';
@@ -23,26 +29,39 @@ import { ListarActividadesComponent } from './componentes/actividades/listar-act
 import { EditarActividadComponent } from './componentes/actividades/editar-actividad/editar-actividad.component';
 import { RegistrarActividadComponent } from './componentes/actividades/registrar-actividad/registrar-actividad.component';
 import { CarruselComponent } from './componentes/carrusel/carrusel.component';
-import { NgImageSliderModule } from 'ng-image-slider';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PieComponent } from './componentes/pie/pie.component';
 import { BarraNavegacionComponent } from './componentes/barra-navegacion/barra-navegacion.component';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { ContactoComponent } from './componentes/contacto/contacto.component';
-import { LoginComponent } from './componentes/auth/login.component';
-import { interceptorProvider } from './services/interceptors/prod-interceptor.service';
+import { RegistrarUsuarioComponent } from './componentes/usuarios/registrar-usuario/registrar-usuario.component';
+
+// primeng
 import { TableModule } from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
-import { DetallesAnimalComponent } from './componentes/animales/detalles-animal/detalles-animal.component';
 import {PanelModule} from 'primeng/panel';
-import { RegisterComponent } from './componentes/auth/register.component';
-import { RegistrarCitaComponent } from './componentes/citas/registrar-cita/registrar-cita.component';
-import { ListarMisCitasComponent } from './componentes/citas/listar-mis-citas/listar-mis-citas.component';
 import {InputTextModule} from 'primeng/inputtext';
-import { VerUsuariosComponent } from './componentes/actividades/ver-usuarios/ver-usuarios.component';
-import { MiPerfilComponent } from './componentes/mi-perfil/mi-perfil.component';
 import {MenubarModule} from 'primeng/menubar';
-import { DetallesActividadComponent } from './componentes/actividades/detalles-actividad/detalles-actividad.component';
+
+//carrusel
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { NgImageSliderModule } from 'ng-image-slider';
+
+//seguridad
+import { interceptorProvider } from './services/interceptors/prod-interceptor.service';
+
+//bootstrap
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+//formularios 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule, createApplication } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+
+
+//enrutamiento
+import { AppRoutingModule } from './app-routing.module';
+
+//enlace api
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -74,9 +93,9 @@ import { DetallesActividadComponent } from './componentes/actividades/detalles-a
     LoginComponent,
     RegisterComponent,
     DetallesAnimalComponent,
-    VerUsuariosComponent,
     MiPerfilComponent,
     DetallesActividadComponent,
+    RegistrarUsuarioComponent
 
   ],
   imports: [

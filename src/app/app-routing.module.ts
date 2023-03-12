@@ -4,7 +4,6 @@ import { DetallesActividadComponent } from './componentes/actividades/detalles-a
 import { EditarActividadComponent } from './componentes/actividades/editar-actividad/editar-actividad.component';
 import { ListarActividadesComponent } from './componentes/actividades/listar-actividades/listar-actividades.component';
 import { RegistrarActividadComponent } from './componentes/actividades/registrar-actividad/registrar-actividad.component';
-import { VerUsuariosComponent } from './componentes/actividades/ver-usuarios/ver-usuarios.component';
 import { DetallesAnimalComponent } from './componentes/animales/detalles-animal/detalles-animal.component';
 import { EditarAnimalComponent } from './componentes/animales/editar-animal/editar-animal.component';
 import { ListarAnimalesComponent } from './componentes/animales/listar-animales/listar-animales.component';
@@ -26,6 +25,7 @@ import { ListarRolesComponent } from './componentes/roles/listar-roles/listar-ro
 import { RegistrarRolComponent } from './componentes/roles/registrar-rol/registrar-rol.component';
 import { EditarUsuarioComponent } from './componentes/usuarios/editar-usuario/editar-usuario.component';
 import { ListarUsuariosComponent } from './componentes/usuarios/listar-usuarios/listar-usuarios.component';
+import { RegistrarUsuarioComponent } from './componentes/usuarios/registrar-usuario/registrar-usuario.component';
 import { ProdGuardsService as guard } from './services/guards/prod-guards.service';
 
 const routes: Routes = [
@@ -73,6 +73,9 @@ const routes: Routes = [
   },
   {
     path: 'usuarios/:id', component: EditarUsuarioComponent, canActivate: [guard], data: {expectedRol: ['ADMIN']}
+  },
+  {
+    path: 'registrar-usuario', component: RegistrarUsuarioComponent, canActivate: [guard], data: {expectedRol: ['ADMIN']}
   },
   {
     path: 'roles', component: ListarRolesComponent, canActivate: [guard], data: {expectedRol: ['ADMIN']}

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Animal } from 'src/app/models/animal/animal';
 import { Cita } from 'src/app/models/cita/cita';
@@ -46,12 +46,12 @@ export class EditarAnimalComponent {
     );
 
     this.animalesForm = this.fb.group({
-      nombre: ['', Validators.required],
-      edad: ['', Validators.required],
-      raza: ['', Validators.required],
-      descripcion: ['', Validators.required],
-      imagen: ['', Validators.required],
-      tipo: ['', Validators.required],
+      nombre: new FormControl('', [Validators.required, Validators.maxLength(15)]),
+      edad: new FormControl('', [Validators.required, Validators.min(0), Validators.max(30)]),
+      raza:  new FormControl('', [Validators.required, Validators.maxLength(30)]),
+      descripcion:  new FormControl('', [Validators.required, Validators.maxLength(150)]),
+      imagen:  new FormControl('', [Validators.required]),
+      tipo:  new FormControl('', [Validators.required, Validators.maxLength(45)]),
     });
   }
 

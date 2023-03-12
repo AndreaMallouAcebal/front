@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Cita } from 'src/app/models/cita/cita';
 import { Rol } from 'src/app/models/rol/rol';
@@ -52,12 +52,12 @@ export class EditarUsuarioComponent {
     );
 
     this.usuariosForm = this.fb.group({
-      nombre: ['', Validators.required],
-      apellidos: ['', Validators.required],
-      email: ['', Validators.required],
-      dni: ['', Validators.required],
-      contrasenia: ['', Validators.required],
-      rol_id:['', Validators.required]
+      nombre: new FormControl('', [Validators.required, Validators.maxLength(45)]),
+      apellidos: new FormControl('', [Validators.required, Validators.maxLength(45)]),
+      email: new FormControl('', [Validators.required]),
+      dni: new FormControl('', [Validators.required, Validators.maxLength(9)]),
+      contrasenia: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      rol_id: new FormControl('', [Validators.required]),
     });
   }
 

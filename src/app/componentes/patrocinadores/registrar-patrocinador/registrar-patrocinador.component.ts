@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Patrocinador } from 'src/app/models/patrocinador/patrocinador';
 import { PatrocinadoresService } from 'src/app/services/patrocinadores/patrocinadores.service';
@@ -23,8 +23,8 @@ export class RegistrarPatrocinadorComponent {
   ngOnInit() {
 
     this.patrocinadoresForm = this.fb.group({
-      nombre: ['', Validators.required],
-      imagen: ['', Validators.required]
+      nombre: new FormControl('', [Validators.required, Validators.maxLength(45)]),
+      imagen: new FormControl('', [Validators.required]),
     });
   }
 

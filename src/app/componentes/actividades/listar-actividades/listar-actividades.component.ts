@@ -41,7 +41,6 @@ export class ListarActividadesComponent {
   ngOnInit(): void{
     //cargamos las actividiades de la bdd
     this.obtenerActividades();
-
     //comprobamos si está logueado
     if(this.tokenService.getToken()){
       this.isLogged = true;

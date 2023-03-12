@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Actividad } from 'src/app/models/actividad/actividad';
 import { Actividadusuario } from 'src/app/models/actividadusuario/actividadusuario';
@@ -16,6 +16,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./editar-actividad.component.css']
 })
 export class EditarActividadComponent {
+  //variables
   id: number = this.activateRouter.snapshot.params['id'];
   actividad: Actividad = new Actividad();
   usuarios: Usuario[];
@@ -30,57 +31,42 @@ export class EditarActividadComponent {
     public actividadesusuariosService: ActividadesusuariosService,
     public usuariosService: UsuariosService
   ) { }
+
   ngOnInit() {
-    //asignamos al objeto animal los datos enviando el id recuperado
+    //asignamos al objeto animal los datos recuperados de la bdd
     this.actividadesService.getActividadId(this.id).subscribe(
       res => { this.actividad = res },
       err => console.log(err)
     );
 
-
+    //formulario reactivo
     this.actividadesForm = this.fb.group({
-      nombre: ['', Validators.required],
-      fecha: ['', Validators.required],
-      descripcion: ['', Validators.required],
+      nombre: new FormControl('', [Validators.required, Validators.maxLength(30)]),
+      fecha: new FormControl('', [Validators.required]),
+      descripcion: new FormControl('', [Validators.required, Validators.maxLength(600)])
     });
 
     // this.recuperarusuarios();
   }
 
+  //actualizamos la actividad en la bdd
   guardarActividad(actividad: Actividad) {
     this.actividadesService.updateActividad(actividad).subscribe(dato => {
+
+      //Ventana emergente- mensaje de exito
       Swal.fire('Actividad editada con éxito')
-      this.actividadesForm.reset();
       this.irALaListaDeActividades();
     },
       error => { console.error(error) }
 
     );
   }
+  //Volver a la lista de actividades
   irALaListaDeActividades() {
     this.router.navigate(['/actividades']);
   }
 
   onSubmit(): void {
-
+    console.log("editada con éxito");
   }
-
-  // recuperarusuarios(){
-  //        //cargamos los usarios
-  //        this.usuariosService.getAllUsuarios().subscribe(dato => {
-  //          this.usuarios = dato;
-  //        });
-
-    
-  //        //cargamos los actividadesusuarios
-  //        this.actividadesusuariosService.getAllActividadesusuarios().subscribe(dato => {
-  //          this.actividadesusuarios = dato;
-  //        });
-
-    
-  //        //guardamos las actividadesusuarios que tiene la actividad
-  //         this.actividadesusuarios = this.actividadesusuarios.filter(c => c.actividad.id = this.id)
-  //         console.log(this.actividadesusuarios)
-    
-  // }
 }

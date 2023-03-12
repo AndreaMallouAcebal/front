@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Animal } from 'src/app/models/animal/animal';
 import { Cita } from 'src/app/models/cita/cita';
@@ -34,9 +34,9 @@ export class RegistrarCitaComponent {
     this.obtenerUsuarios();
 
     this.citasForm = this.fb.group({
-      fecha: ['', Validators.required],
-      animal_id:['', Validators.required],
-      usuario_id:['', Validators.required]
+      fecha: new FormControl('', [Validators.required]),
+      animal_id: new FormControl('', [Validators.required]),
+      usuario_id:new FormControl('', [Validators.required]),
     });
   }
 
