@@ -3,8 +3,10 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { Animal } from 'src/app/models/animal/animal';
 import { AnimalesService } from 'src/app/services/animales/animales.service';
+
 //ventanas emegentes
 import Swal from 'sweetalert2';
+import { StorageService } from '../storage.service';
 @Component({
   selector: 'app-registrar-animal',
   templateUrl: './registrar-animal.component.html',
@@ -17,7 +19,9 @@ animal:Animal=new Animal();
   constructor(
     private router: Router,
     public fb: FormBuilder,
-    public animalesService : AnimalesService
+    public animalesService : AnimalesService,
+    // imagenes firebase
+    private storageService: StorageService
   ) { }
   ngOnInit() {
 
@@ -26,12 +30,14 @@ animal:Animal=new Animal();
       edad: new FormControl('', [Validators.required, Validators.min(0), Validators.max(30)]),
       raza:  new FormControl('', [Validators.required, Validators.maxLength(30)]),
       descripcion:  new FormControl('', [Validators.required, Validators.maxLength(150)]),
-      imagen:  new FormControl('', [Validators.required]),
       tipo:  new FormControl('', [Validators.required, Validators.maxLength(45)]),
+      imagen: new FormControl('')
     });
   }
 
   guardarAnimal(){
+    console.log("imagen",this.animal.imagen)
+    console.log("animal",this.animal)
     this.animalesService.saveAnimal(this.animalesForm.value).subscribe(dato => {
       Swal.fire('Animal guardado con éxito');
       this.animalesForm.reset();
@@ -47,6 +53,26 @@ animal:Animal=new Animal();
 
   onSubmit(): void {
     this.guardarAnimal();
+  }
+
+  imagenes:any=[];
+  //*******************imagenes********/
+  uploadImage(event:any){
+     const file=event.target.files[0];
+     console.log(file);
+    let reader= new FileReader();
+    reader.readAsDataURL(file)
+
+    reader.onloadend=()=>{
+      console.log(reader.result);
+      this.imagenes.push(reader.result);
+      this.storageService.subirImagen(file.nombre +'_' + Date.now() , reader.result).then(urlImagen=>{
+        console.log(urlImagen)
+       this.animal.imagen=""+urlImagen
+       console.log(this.animal.imagen)
+      })
+    }
+
   }
 
 }

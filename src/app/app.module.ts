@@ -112,7 +112,7 @@ import { HttpClientModule } from '@angular/common/http';
     ButtonModule,
     PanelModule,
     InputTextModule,
-    MenubarModule,
+    MenubarModule
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]

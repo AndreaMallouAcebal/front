@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -6,8 +5,10 @@ import { Animal } from 'src/app/models/animal/animal';
 import { Cita } from 'src/app/models/cita/cita';
 import { AnimalesService } from 'src/app/services/animales/animales.service';
 import { CitasService } from 'src/app/services/citas/citas.service';
+import { StorageService } from '../storage.service';
 //ventanas emegentes
 import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-editar-animal',
@@ -16,7 +17,6 @@ import Swal from 'sweetalert2';
 })
 export class EditarAnimalComponent {
   //recuperamos el id de la url 
-  //id:number=parseInt(window.location.pathname.substr(0).split('/')[2]);
   id:number=this.activateRouter.snapshot.params['id'];
   animal:Animal=new Animal();
   citas: Cita[]=[];
@@ -27,7 +27,9 @@ export class EditarAnimalComponent {
     private router: Router,
     public fb: FormBuilder,
     public animalesService : AnimalesService,
-    public citasService : CitasService
+    public citasService : CitasService,
+     // imagenes firebase
+     private storageService: StorageService
   ) { }
   ngOnInit() {
 
@@ -70,6 +72,25 @@ export class EditarAnimalComponent {
   }
 
   onSubmit(): void {
+
+  }
+
+  imagenes:any=[];
+  //*******************imagenes********/
+  uploadImage(event:any){
+     const file=event.target.files[0];
+     console.log(file);
+    let reader= new FileReader();
+    reader.readAsDataURL(file)
+
+    reader.onloadend=()=>{
+      console.log(reader.result);
+      this.imagenes.push(reader.result);
+      this.storageService.subirImagen(reader.result?.toString +'_' + Date.now() , reader.result).then(urlImagen=>{
+        //añadimos la url al campo imagen
+       this.animal.imagen=""+urlImagen
+      })
+    }
 
   }
 
