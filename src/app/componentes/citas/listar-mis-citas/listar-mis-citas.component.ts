@@ -16,7 +16,8 @@ export class ListarMisCitasComponent {
 
   citas: Cita[];
   cita: Cita;
-  
+  isAdmin = false;
+
   constructor(
     public fb: FormBuilder,
     public citasService: CitasService,
@@ -25,6 +26,11 @@ export class ListarMisCitasComponent {
 
   ngOnInit(): void {
     this.obtenerCitas();
+
+    //comprobamos si es admin
+    if (this.tokenService.getAuthorities() === 'ADMIN') {
+      this.isAdmin = true;
+    }
   }
 
   private obtenerCitas() {
@@ -33,10 +39,10 @@ export class ListarMisCitasComponent {
     this.citasService.getAllCitasUsuario(params).subscribe(
       dato => {
         this.citas = dato;
-    });
+      });
   }
 
-  onClickConfirmarEliminarCita(id:number){
+  onClickConfirmarEliminarCita(id: number) {
     this.citasService.deleteCita(id).subscribe(
       citas => this.citas = this.citas.filter(c => c.id !== id)
     );
@@ -50,7 +56,7 @@ export class ListarMisCitasComponent {
       },
       buttonsStyling: false
     })
-    
+
     swalWithBootstrapButtons.fire({
       title: '¿Está seguro que quiere eliminar esta actividad?',
       text: "¡Esta acción es irreversible!",

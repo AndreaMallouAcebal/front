@@ -16,48 +16,48 @@ import Swal from 'sweetalert2';
   styleUrls: ['./listar-animales.component.css']
 })
 export class ListarAnimalesComponent implements OnInit {
-  animales:Animal[];
-  animal :Animal;
-  citas:Cita[];
-  isAdmin = false; 
+  animales: Animal[];
+  animal: Animal;
+  citas: Cita[];
+  isAdmin = false;
   constructor(
     public fb: FormBuilder,
-    public animalesService : AnimalesService,
-    public citasService : CitasService,
-    private tokenService : TokenService
-  ){}
+    public animalesService: AnimalesService,
+    public citasService: CitasService,
+    private tokenService: TokenService
+  ) { }
 
-  ngOnInit(): void{
+  ngOnInit(): void {
     //cargamos las citas
-    this.citasService.getAllCitas().subscribe(dato=>{
+    this.citasService.getAllCitas().subscribe(dato => {
       this.citas = dato;
     });
-    if(this.tokenService.getAuthorities() === 'ADMIN'){
+    if (this.tokenService.getAuthorities() === 'ADMIN') {
       this.isAdmin = true;
     }
     this.obtenerAnimales();
   }
 
-  private obtenerAnimales(){
-    this.animalesService.getAllAnimales().subscribe(dato=>{
+  public obtenerAnimales() {
+    this.animalesService.getAllAnimales().subscribe(dato => {
       this.animales = dato;
     });
   }
 
-  onClickConfirmarEliminarAnimal(id:number){
-//guardamos las citas que tiene el animal
-this.citas=this.citas.filter(c=>c.animal.id=id)
-if(this.citas.length>1){
-  this.citas.forEach(c=>
-  this.citasService.deleteCita(c.id)
-  )
-}
-this.animalesService.deleteAnimal(id).subscribe(
-  animales=> this.animales= this.animales.filter(ani=>ani.id!==id),
-  
-);
+  onClickConfirmarEliminarAnimal(id: number) {
+    //guardamos las citas que tiene el animal
+    this.citas = this.citas.filter(c => c.animal.id = id)
+    if (this.citas.length > 1) {
+      this.citas.forEach(c =>
+        this.citasService.deleteCita(c.id)
+      )
+    }
+    this.animalesService.deleteAnimal(id).subscribe(
+      animales => this.animales = this.animales.filter(ani => ani.id !== id),
+
+    );
   }
-  onClickEliminarAnimal(id:number){
+  onClickEliminarAnimal(id: number) {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success',
@@ -65,7 +65,7 @@ this.animalesService.deleteAnimal(id).subscribe(
       },
       buttonsStyling: false
     })
-    
+
     swalWithBootstrapButtons.fire({
       title: '¿Está seguro que quiere eliminar este animal?',
       text: "¡Esta acción es irreversible!",
@@ -93,18 +93,23 @@ this.animalesService.deleteAnimal(id).subscribe(
         )
       }
     })
-     
+
   }
 
-  onClickGatos(){  
-  this.animales=this.animales.filter(animales=>animales.tipo=="gato");
-}
+  onClickGatos() {
+    this.animalesService.getAllAnimales().subscribe(dato => {
+      this.animales = dato;
+      this.animales = this.animales.filter(animales => animales.tipo == "gato");
+    });
+  }
 
-onClickPerros(){
- async function getanimales(this: any){
-      await this.obtenerAnimales();
-    }
-  this.animales=this.animales.filter(animales=>animales.tipo=="perro");
-}
+  onClickPerros() {
+    this.animalesService.getAllAnimales().subscribe(dato => {
+      this.animales = dato;
+      this.animales = this.animales.filter(animales => animales.tipo == "perro");
+    });
+
+
+  }
 
 }

@@ -12,30 +12,19 @@
           <li class="nav-item">
             <a class="nav-link" href="actividades">Actividades</a>
           </li>
-          <li class="nav-item" *ngIf="isAdmin">
-            <a class="nav-link" href="usuarios">Usuarios</a>
-          </li>
-          <li class="nav-item" *ngIf="isAdmin">
-            <a class="nav-link" href="citas">Citas</a>
-          </li>
           <li class="nav-item" *ngIf="isLogged && !isAdmin">
             <a class="nav-link" href="mis-citas">Mis Citas</a>
           </li>
-          <li class="nav-item" *ngIf="isAdmin">
-            <a class="nav-link" href="patrocinadores">Patrocinadores</a>
-          </li>
-          <li class="nav-item">
+          <li class="nav-item" >
             <a class="nav-link" href="contacto">Contacto</a>
           </li>
-          <li class="nav-item dropdown dmenu">
-        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" data-bs-toggle="dropdown" >
-          Dropdown link
-        </a>
+          <li class="dropdown" *ngIf="isAdmin">
+        <button  class="btn btn-secondary dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" data-bs-toggle="dropdown" >
+          Editar
+        </button>
         <div class="dropdown-menu sm-menu" data-bs-toggle="dropdown" >
-          <a class="dropdown-item" href="#">Link 1</a>
-          <a class="dropdown-item" href="#">Link 2</a>
-          <a class="dropdown-item" href="#">Link 3</a>
-
+          <a class="dropdown-item" href="/patrocinadores">Patrocinadores</a>
+          <a class="dropdown-item" href="usuarios">Usuarios</a>
         </div>
       </li>
         </ul>
