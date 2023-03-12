@@ -18,8 +18,10 @@
             </ng-template>
             <ng-template pTemplate="footer">
                 <!-- botón para apuntarse -->
-                <button *ngIf="isLogged" type="button" (click)="onClickApuntarse(actividad.id)"
+                <button *ngIf="isLogged&&!isApuntado" type="button" (click)="onClickApuntarse(actividad.id)"
                     class="btn btn-sm btn-outline-secondary">Apuntarse</button>
+                <button *ngIf="isLogged&&isApuntado" type="button" (click)="onClickDesapuntarse(actividad.id)"
+                    class="btn btn-sm btn-outline-secondary">Desapuntarse</button>    
             </ng-template>
         </p-panel>
     </div>

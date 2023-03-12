@@ -17,6 +17,7 @@
             <div class="card-body">
                 <form #f="ngForm" (ngSubmit)="onLogin()" novalidate>
                     <div class="form-group">
+                      <div *ngIf="f.submitted && isLoginFail" class="alert alert-danger mt-3">{{errMsg}}</div>
                       <label for="userEmail">Email del Usuario</label>
                       <input type="text" name="userEmail" id="userEmail" class="form-control"
                       [(ngModel)]="userEmail" required pInputText>
@@ -30,7 +31,6 @@
                       <button class="btn btn-outline-success btn-block" [disabled]="!f.valid"> Iniciar sesion</button>
                     </div>
                   </form>
-                  <div *ngIf="f.submitted && isLoginFail" class="alert alert-danger mt-3">{{errMsg}}</div>
              </div>
 
         </div>

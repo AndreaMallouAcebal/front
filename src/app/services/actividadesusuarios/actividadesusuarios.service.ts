@@ -43,7 +43,7 @@ export class ActividadesusuariosService {
     return this.http.put(this.actividadusuarioUrl + '/' + actividadusuario.id , actividadusuario);
   }
 
-   deleteActividadusuario(id: number): Observable<Actividadusuario> {
-     return this.http.delete<Actividadusuario>(this.actividadusuarioUrl + '/' + id)
+   public deleteActividadusuario(id:number): Observable<Actividadusuario> {
+     return this.http.delete<Actividadusuario>(this.actividadusuarioUrl+ '/' + id);
    }
 }
