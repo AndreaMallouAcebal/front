@@ -12,14 +12,14 @@ import Swal from 'sweetalert2';
   styleUrls: ['./mi-perfil.component.css']
 })
 export class MiPerfilComponent {
-usuario:Usuario;
+  usuario: Usuario;
   router: Router;
 
   constructor(
     private tokenService: TokenService,
     private usuarioService: UsuariosService
-  ){}
-  ngOnInit(){
+  ) { }
+  ngOnInit() {
     this.obtenerDatosUsuario();
   }
   private obtenerDatosUsuario() {
@@ -28,18 +28,18 @@ usuario:Usuario;
     this.usuarioService.getMyUser(params).subscribe(
       dato => {
         this.usuario = dato;
-    });
+      });
   }
 
-  onClickConfirmarEliminarUsuario(id:number){
+  onClickConfirmarEliminarUsuario(id: number) {
     this.usuarioService.deleteUsuario(id).subscribe();
     this.router.navigate(['/']);
     this.tokenService.logOut();
     window.location.reload();
-    
+
   }
 
-  onClickEliminarUsuario(id:number){
+  onClickEliminarUsuario(id: number) {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success',
@@ -47,7 +47,7 @@ usuario:Usuario;
       },
       buttonsStyling: false
     })
-    
+
     swalWithBootstrapButtons.fire({
       title: '¿Está seguro que quiere eliminar su cuenta?',
       text: "¡Esta acción es irreversible!",
@@ -75,6 +75,14 @@ usuario:Usuario;
         )
       }
     })
+  }
+
+  onLogOut(): void {
+    this.tokenService.logOut();
+    window.location.reload();
+    this.router.navigate(['/']);
+    window.location.reload();
+
     
   }
 }

@@ -31,7 +31,7 @@ export class EditarUsuarioComponent {
     public fb: FormBuilder,
     public usuariosService : UsuariosService,
     public citasService : CitasService,
-    public rolesService : RolesService
+    public rolesService : RolesService,
   ) { }
   ngOnInit() {
 
@@ -56,8 +56,7 @@ export class EditarUsuarioComponent {
       apellidos: new FormControl('', [Validators.required, Validators.maxLength(45)]),
       email: new FormControl('', [Validators.required]),
       dni: new FormControl('', [Validators.required, Validators.maxLength(9)]),
-      contrasenia: new FormControl('', [Validators.required, Validators.minLength(6)]),
-      rol_id: new FormControl('', [Validators.required]),
+      contrasenia: new FormControl('', [Validators.required, Validators.minLength(6)])
     });
   }
 
@@ -87,7 +86,7 @@ export class EditarUsuarioComponent {
   }
 
   onSubmit(): void {
-
+   
   }
 
 }
