@@ -11,6 +11,7 @@ export class UsuariosService {
   private usuarioUrl="http://localhost:8080/usuarios";
   private usuarioAuth="http://localhost:8080/auth/new";
   private miPerfilUrl="http://localhost:8080/mi-perfil";
+  private voluntarioUrl = "http://localhost:8080/voluntarios";
 
   constructor(
     private http:HttpClient
@@ -41,4 +42,8 @@ export class UsuariosService {
    public getMyUser(params: HttpParams): Observable<Usuario>{
     return this.http.post<Usuario>(this.miPerfilUrl, params);
    }
+
+  public hacerVoluntario(usuario:Usuario): Observable<any>{
+    return this.http.put(this.voluntarioUrl + '/' + usuario.id , usuario);
+  }
 }

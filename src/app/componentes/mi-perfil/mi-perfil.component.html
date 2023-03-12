@@ -3,12 +3,12 @@
   <div class="card-body">
     <div class="card-title"><img src="../../../assets/img/usuario.png" alt="foto usuario"></div>
    
-      <h5 class="card-title">{{usuario.nombre}} {{usuario.apellidos}}</h5>
+      <h5 class="card-title">{{usuario.nombre}} {{usuario.apellidos}} </h5>
       <br>
     </div>
     <ul class="list-group list-group-flush">
 
-      <li class="list-group-item">Dni: {{usuario.dni}}</li>
+      <li class="list-group-item">Dni: {{usuario.dni}} </li>
       <li class="list-group-item">Email: {{usuario.email}}</li>
 
 
@@ -19,6 +19,8 @@
       <a (click)="onClickEliminarUsuario(usuario.id)" class="card-link">Eliminar cuenta</a>
     </div>
     </div>
+    <button *ngIf="!usuario.voluntario" type="button" class="btn btn-primary" 
+    (click)="onVoluntario(usuario)">Hazte voluntario!</button>
     <button type="button" class="btn btn-danger" 
     (click)="onLogOut()">Cerrar sesion</button>
   </div>

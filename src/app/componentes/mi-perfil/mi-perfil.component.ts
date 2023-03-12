@@ -32,11 +32,10 @@ export class MiPerfilComponent {
   }
 
   onClickConfirmarEliminarUsuario(id: number) {
-    this.usuarioService.deleteUsuario(id).subscribe();
-    this.router.navigate(['/']);
-    this.tokenService.logOut();
-    window.location.reload();
-
+    this.usuarioService.deleteUsuario(id).subscribe(
+      dato =>{this.router.navigate(['/']);
+      this.tokenService.logOut();
+      window.location.reload();});
   }
 
   onClickEliminarUsuario(id: number) {
@@ -82,7 +81,52 @@ export class MiPerfilComponent {
     window.location.reload();
     this.router.navigate(['/']);
     window.location.reload();
+  }
 
-    
+  confirmarVoluntario(usuario : Usuario){
+    usuario.voluntario = true;
+    this.usuarioService.hacerVoluntario(usuario).subscribe(
+      dato => {
+        this.usuario = dato;
+      }
+    );
+  }
+
+  onVoluntario(usuario : Usuario) {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+      title: '¿Está seguro que quiere hacerse voluntario?',
+      text: "Haciendose voluntario se está comprometiendo a realizar labores que puedan ayudar a los animales",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, quiero ser voluntario',
+      cancelButtonText: 'No, lo he pensado mejor',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.confirmarVoluntario(usuario)
+        swalWithBootstrapButtons.fire(
+          'Bienvenido!',
+          'Se acaba de dar de alta como voluntario, pase por nuestra oficina para que podamos conocer su disponibilidad y proceder a la firma de papeles',
+          'success'
+        )
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelado',
+          'No se ha hecho voluntario',
+          'error'
+        )
+      }
+    })
   }
 }

@@ -8,5 +8,6 @@ export class Usuario {
     email:string;
     dni:string;
     contrasenia:string;
-    rol: Rol
+    rol: Rol;
+    voluntario:boolean;
 }
