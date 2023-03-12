@@ -9,7 +9,7 @@ import { ActividadesService } from 'src/app/services/actividades/actividades.ser
 import { ActividadesusuariosService } from 'src/app/services/actividadesusuarios/actividadesusuarios.service';
 import { TokenService } from 'src/app/services/seguridad/token.service';
 import { UsuariosService } from 'src/app/services/usuarios/usuarios.service';
-//ventanas emegentes
+//librería de ventanas emegentes
 import Swal from 'sweetalert2';
 
 @Component({
@@ -18,6 +18,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./listar-actividades.component.css']
 })
 export class ListarActividadesComponent {
+  //variables
   actividades:Actividad[];
   actividad :Actividad;
   usuario:Usuario;
@@ -36,19 +37,19 @@ export class ListarActividadesComponent {
     public usuariosService: UsuariosService,
     private tokenService: TokenService
   ){}
-
+  
   ngOnInit(): void{
-    //Llamamos a los métodos para cargar los arrays con la base de datos
-    // this.obtenerUsuarios();
-    // this.obtenerActividadesUsuarios();
+    //cargamos las actividiades de la bdd
     this.obtenerActividades();
 
+    //comprobamos si está logueado
     if(this.tokenService.getToken()){
       this.isLogged = true;
     }else {
       this.isLogged = false;
     }
     
+    //comprobamos si es usuario
     if(this.tokenService.getAuthorities() === 'ADMIN'){
       this.isAdmin = true;
     }
@@ -61,65 +62,7 @@ export class ListarActividadesComponent {
     });
   }
 
-  onClickConfirmarEliminarActividad(id:number){
-    this.actividadesService.deleteActividad(id).subscribe(
-      actividades=> this.actividades= this.actividades.filter(a=>a.id!==id)
-    );
-  }
-
-  confirmarApuntarse(id: number ){
-    let params = new HttpParams()
-      .set('userEmail', this.tokenService.getEmail())
-      .set('idActividad', id);
-    this.actividadesusuariosService.saveActividadWithEmail(params).subscribe(
-      error => { console.error(error) }
-    );
-    this.irALaListaDeActividades(); 
-  }
-
-  irALaListaDeActividades() {
-    this.router.navigate(['/actividades']);
-  }
-
-
-  onClickApuntarse(id: number){
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: 'btn btn-success',
-        cancelButton: 'btn btn-danger'
-      },
-      buttonsStyling: false
-    })
-    
-    swalWithBootstrapButtons.fire({
-      title: '¿Está seguro que quiere apuntarse a esta actividad?',
-      text: 'Rogamos compromiso con las actividades solicitadas',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Sí, confirmar',
-      cancelButtonText: 'No, cancelar',
-      reverseButtons: true
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.confirmarApuntarse(id)
-        swalWithBootstrapButtons.fire(
-          '¡Está apuntado a esta actividad!',
-          'Muchas gracias por su interés',
-          'success'
-        )
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
-        swalWithBootstrapButtons.fire(
-          'Cancelado',
-          'Ha cancelado la solicitud para apuntarse',
-          'error'
-        )
-      }
-    })
-  }
-
+  //Ventana de confirmación para eliminar actividad
   onClickEliminarActividad(id:number){
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -156,5 +99,12 @@ export class ListarActividadesComponent {
         )
       }
     })
+  }
+
+   //Eliminamos la actividad
+   onClickConfirmarEliminarActividad(id:number){
+    this.actividadesService.deleteActividad(id).subscribe(
+      actividades=> this.actividades= this.actividades.filter(a=>a.id!==id)
+    );
   }
 }
