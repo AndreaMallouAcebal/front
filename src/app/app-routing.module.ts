@@ -16,6 +16,7 @@ import { ListarMisCitasComponent } from './componentes/citas/listar-mis-citas/li
 import { RegistrarCitaComponent } from './componentes/citas/registrar-cita/registrar-cita.component';
 import { ContactoComponent } from './componentes/contacto/contacto.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
+import { MiPerfilComponent } from './componentes/mi-perfil/mi-perfil.component';
 import { EditarPatrocinadorComponent } from './componentes/patrocinadores/editar-patrocinador/editar-patrocinador.component';
 import { ListarPatrocinadoresComponent } from './componentes/patrocinadores/listar-patrocinadores/listar-patrocinadores.component';
 import { RegistrarPatrocinadorComponent } from './componentes/patrocinadores/registrar-patrocinador/registrar-patrocinador.component';
@@ -101,6 +102,9 @@ const routes: Routes = [
   },
   {
     path: 'contacto', component: ContactoComponent
+  },
+  {
+    path: 'mi-perfil', component: MiPerfilComponent
   }
 
 ];

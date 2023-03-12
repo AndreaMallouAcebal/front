@@ -1,0 +1,19 @@
+img{
+    width: 50px;
+    margin: 50%;
+}
+
+.container{
+    width: 100%;
+    height: auto;
+  
+    /* add flexbox */
+    display: flex;
+    justify-content: space-around;
+    flex-flow:wrap;
+}
+.card{
+    margin-top: 5%;
+    align-items: center;
+    width: 50%;
+}

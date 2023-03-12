@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Usuario } from 'src/app/models/usuario/usuario';
@@ -9,7 +9,8 @@ import { Usuario } from 'src/app/models/usuario/usuario';
 export class UsuariosService {
 
   private usuarioUrl="http://localhost:8080/usuarios";
-  private usuarioAuth="http://localhost:8080/auth/new"
+  private usuarioAuth="http://localhost:8080/auth/new";
+  private miPerfilUrl="http://localhost:8080/auth/new";
 
   constructor(
     private http:HttpClient
@@ -33,7 +34,11 @@ export class UsuariosService {
     return this.http.put(this.usuarioUrl + '/' + usuario.id , usuario);
   }
 
-   deleteUsuario(id: number): Observable<Usuario> {
+  public deleteUsuario(id: number): Observable<Usuario> {
      return this.http.delete<Usuario>(this.usuarioUrl + '/' + id)
+   }
+
+   public getMyUser(params: HttpParams): Observable<Usuario>{
+    return this.http.post<Usuario>(this.miPerfilUrl, params);
    }
 }

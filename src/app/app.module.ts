@@ -40,6 +40,8 @@ import { RegistrarCitaComponent } from './componentes/citas/registrar-cita/regis
 import { ListarMisCitasComponent } from './componentes/citas/listar-mis-citas/listar-mis-citas.component';
 import {InputTextModule} from 'primeng/inputtext';
 import { VerUsuariosComponent } from './componentes/actividades/ver-usuarios/ver-usuarios.component';
+import { MiPerfilComponent } from './componentes/mi-perfil/mi-perfil.component';
+import {MenubarModule} from 'primeng/menubar';
 
 
 @NgModule({
@@ -72,6 +74,8 @@ import { VerUsuariosComponent } from './componentes/actividades/ver-usuarios/ver
     RegisterComponent,
     DetallesAnimalComponent,
     VerUsuariosComponent,
+    MiPerfilComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -86,7 +90,8 @@ import { VerUsuariosComponent } from './componentes/actividades/ver-usuarios/ver
     TableModule,
     ButtonModule,
     PanelModule,
-    InputTextModule
+    InputTextModule,
+    MenubarModule,
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]
