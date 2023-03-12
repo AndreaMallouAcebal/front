@@ -1,6 +1,10 @@
 img{
     width: 50px;
-    margin: 50%;
+    margin: 10%;
+    text-align: center;
+}
+.card-title{
+    text-align: center;
 }
 
 .container{
@@ -14,6 +18,12 @@ img{
 }
 .card{
     margin-top: 5%;
-    align-items: center;
-    width: 50%;
+    width: 500px;
+    padding: 0 10% 0 10%;
+}
+button{
+    margin:10%
+}
+.enlaces{
+    text-align: center;
 }
