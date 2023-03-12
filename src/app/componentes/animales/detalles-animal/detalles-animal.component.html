@@ -28,6 +28,7 @@
               formControlName="fecha" class="form-control">
             <button *ngIf="isLogged" type="button" class="btn btn-sm btn-outline-secondary"
               [disabled]="citasForm.invalid" (click)="onClickGuardarCita()">Pedir cita</button>
+            <div *ngIf="!isLogged" class="alert alert-danger mt-3">Registrese para pedir una cita</div>
           </form>
         </div>
       </div>

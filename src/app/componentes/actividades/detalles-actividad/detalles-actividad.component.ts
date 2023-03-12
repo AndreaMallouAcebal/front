@@ -30,6 +30,7 @@ export class DetallesActividadComponent {
   isLogged = false;
   isApuntado = false;
   email : string;
+  isPasado = false;
 
   constructor(
     private activateRouter: ActivatedRoute,
@@ -44,7 +45,14 @@ export class DetallesActividadComponent {
   ngOnInit() {
 
      this.actividadesService.getActividadId(this.id).subscribe(
-       res => { this.actividad = res },
+       res => { this.actividad = res;
+        //Comparamos la fecha de hoy con la fecha de la actividad para mostrar si estan disponibles o no
+        const hoy = new Date();
+        const diaActividad = new Date(this.actividad.fecha);
+        if(hoy >= diaActividad){
+          this.isPasado = true;
+        }
+      },
        err => console.log(err)
 
        );
@@ -54,7 +62,6 @@ export class DetallesActividadComponent {
     this.actividadesUsuariosService.getAllActividadesusuariosByActividad(this.id).subscribe(
       res => { this.actividadesusuarios = res;
         for(var au of this.actividadesusuarios){
-          console.log(au.usuario.email);
           if(au.usuario.email === this.email){
             this.isApuntado = true;
           }
@@ -109,12 +116,51 @@ export class DetallesActividadComponent {
     this.router.navigate(['/actividades']);
   }
 
-  onClickDesapuntarse(id: number) {
+  confirmarDesapuntarse(id: number) {
     this.actividadesUsuariosService.deleteActividadusuario(id).subscribe(
     error => { console.error(error) }
     );
     this.irALaListaDeActividades(); 
   }
+
+  onClickDesapuntarse(id: number){
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      title: '¿Está seguro que quiere desapuntarse de esta actividad?',
+      text: 'Rogamos compromiso con las actividades solicitadas',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, confirmar',
+      cancelButtonText: 'No, cancelar',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.confirmarDesapuntarse(id)
+        swalWithBootstrapButtons.fire(
+          '¡Se ha desapuntado de esta actividad!',
+          'Muchas gracias',
+          'success'
+        )
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelado',
+          'Ha cancelado la solicitud para apuntarse',
+          'error'
+        )
+      }
+    })
+  }
+
 
 
   onClickApuntarse(id: number){
