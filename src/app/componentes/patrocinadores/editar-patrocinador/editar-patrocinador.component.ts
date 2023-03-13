@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { Patrocinador } from 'src/app/models/patrocinador/patrocinador';
 import { CitasService } from 'src/app/services/citas/citas.service';
+import { StorageService } from 'src/app/services/firebase/storage.service';
 import { PatrocinadoresService } from 'src/app/services/patrocinadores/patrocinadores.service';
 //ventanas emegentes
 import Swal from 'sweetalert2';
@@ -24,7 +25,9 @@ export class EditarPatrocinadorComponent {
     private router: Router,
     public fb: FormBuilder,
     public patrocinadoresService : PatrocinadoresService,
-    public citasService : CitasService
+    public citasService : CitasService,
+       // imagenes firebase
+       private storageService: StorageService
   ) { }
   ngOnInit() {
 
@@ -36,12 +39,13 @@ export class EditarPatrocinadorComponent {
 
     this.patrocinadoresForm = this.fb.group({
       nombre: new FormControl('', [Validators.required, Validators.maxLength(45)]),
-      imagen: new FormControl('', [Validators.required]),
+      imagen: new FormControl(''),
 
     });
   }  
 
   guardarPatrocinador(patrocinador : Patrocinador){
+    console.log(patrocinador)
     this.patrocinadoresService.updatePatrocinador(patrocinador)
     .subscribe(dato => {
       Swal.fire('Patrocinador editado con éxito');
@@ -60,4 +64,23 @@ export class EditarPatrocinadorComponent {
 
   }
 
+  imagenes:any=[];
+  //*******************imagenes********/
+  uploadImage(event:any){
+     const file=event.target.files[0];
+     console.log(file);
+    let reader= new FileReader();
+    reader.readAsDataURL(file)
+
+    reader.onloadend=()=>{
+      console.log(reader.result);
+      this.imagenes.push(reader.result);
+      this.storageService.subirImagen(file.nombre +'_' + Date.now() , reader.result).then(urlImagen=>{
+        console.log(urlImagen)
+       this.patrocinador.imagen=""+urlImagen
+       console.log(this.patrocinador.imagen)
+      })
+    }
+
+  }
 }

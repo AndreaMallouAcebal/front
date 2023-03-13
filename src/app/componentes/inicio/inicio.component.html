@@ -28,19 +28,7 @@
       <strong>En caso de querer ADOPTAR a uno de nuestros pequeñines, puedes pedir cita desde esta misma web, en el apartado de animales, haciendo click en aquel que más te interese.</strong>
       </p>
 </div>
-<div class="container">
-<h4>Patrocinadores</h4>
-<div class="row container">
-  <div class="col" id="columns" *ngFor="let patrocinador of patrocinadores">
-  <div class="pat">
-    <img src={{patrocinador.imagen}} class="figurepatrocinadores">
-    <figcaption>{{patrocinador.nombre}}</figcaption>
-    <button *ngIf="isAdmin" type="button" pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" routerLink="../patrocinadores/{{patrocinador.id}}"></button>
-    <button *ngIf="isAdmin" type="button" (click)="onClickEliminarPatrocinador(patrocinador.id)"  pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"></button>
-  </div>
-</div>
-</div>
-</div>
+<app-listar-patrocinadores></app-listar-patrocinadores>
 <div class="container">
   <app-pie></app-pie>
 </div>

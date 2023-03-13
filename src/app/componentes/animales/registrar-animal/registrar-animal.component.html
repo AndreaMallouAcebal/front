@@ -32,7 +32,7 @@
         campo descripción no puede estar vacío y su longitud no puede exceder los 150 caracteres</div>
       <div class="form-group">
         <label>Imagen</label>
-        <input type="file" name="imagenanimal" id="imagenanimal" (change)="uploadImage($event)" required>
+        <input type="file" name="imagenanimal" class="form-control" id="imagenanimal" (change)="uploadImage($event)" required>
         <input type="hidden" [(ngModel)]="animal.imagen" name="imagen" id="imagen"  formControlName="imagen" class="form-control">
       </div><br>
       <!--MENSAJE DE ERROR (REQUERIDO)-->

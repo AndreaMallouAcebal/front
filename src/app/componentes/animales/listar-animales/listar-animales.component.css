@@ -10,6 +10,7 @@ img{
 img:hover{
   opacity: 1;
   -webkit-transform:scale(1.1);transform:scale(1.1);
+  cursor:pointer;
 }
 
 /* hacemos que se muestren en linea */

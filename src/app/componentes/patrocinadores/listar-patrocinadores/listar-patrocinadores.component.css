@@ -1,24 +1,10 @@
-*{
-    font-size: 18px;
-    color: #333333 ;
-}
-
-
-.contenedor{
+  .container{
+    align-content: center;
     text-align: center;
-    width: 80%;
-    margin: 0 auto;
-}
-span{
-    font-size: 30px;
-}
-
-.card{
-    margin-top: 2%;
-}
-a{
-    color:sandybrown
-}
-#nueva{
-    float: right;
-}
+  }
+  
+  h4{
+    text-align: left;
+    padding:  6% 0% 4% 1%;
+    color: dimgray
+  }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Patrocinador } from 'src/app/models/patrocinador/patrocinador';
 import { PatrocinadoresService } from 'src/app/services/patrocinadores/patrocinadores.service';
+import { TokenService } from 'src/app/services/seguridad/token.service';
 //ventanas emegentes
 import Swal from 'sweetalert2';
 
@@ -13,14 +14,20 @@ import Swal from 'sweetalert2';
 export class ListarPatrocinadoresComponent {
   patrocinadores:Patrocinador[];
   patrocinador:Patrocinador;
-
+  isAdmin = false;
+  
   constructor(
     public fb: FormBuilder,
-    public patrocinadoresService : PatrocinadoresService
+    public patrocinadoresService : PatrocinadoresService,
+    private tokenService: TokenService
   ){}
 
   ngOnInit(): void{
     this.obtenerPatrocinadores();
+
+    if (this.tokenService.getAuthorities() === 'ADMIN') {
+      this.isAdmin = true;
+    }
   }
 
   private obtenerPatrocinadores(){

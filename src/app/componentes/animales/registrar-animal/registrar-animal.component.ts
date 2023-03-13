@@ -6,7 +6,7 @@ import { AnimalesService } from 'src/app/services/animales/animales.service';
 
 //ventanas emegentes
 import Swal from 'sweetalert2';
-import { StorageService } from '../storage.service';
+import { StorageService } from '../../../services/firebase/storage.service';
 @Component({
   selector: 'app-registrar-animal',
   templateUrl: './registrar-animal.component.html',

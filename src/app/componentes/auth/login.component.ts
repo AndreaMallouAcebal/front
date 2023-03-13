@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserLogin } from 'src/app/models/login/login-usuario';
 import { AuthService } from 'src/app/services/seguridad/auth.service';
@@ -17,11 +18,13 @@ export class LoginComponent implements OnInit {
   contrasenia: string;
   rol : string;
   errMsg : string;
+  public loginForm: FormGroup;
 
   constructor(
     private tokenService: TokenService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    public fb: FormBuilder,
   ) {}
 
   ngOnInit(): void {
@@ -30,6 +33,12 @@ export class LoginComponent implements OnInit {
       this.isLoginFail=false;
       this.rol = this.tokenService.getAuthorities();
     }
+
+    //formulario reactivo
+    this.loginForm = this.fb.group({
+      userEmail: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    });
   }
 
   onLogin(): void {

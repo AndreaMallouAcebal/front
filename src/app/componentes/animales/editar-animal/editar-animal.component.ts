@@ -5,7 +5,7 @@ import { Animal } from 'src/app/models/animal/animal';
 import { Cita } from 'src/app/models/cita/cita';
 import { AnimalesService } from 'src/app/services/animales/animales.service';
 import { CitasService } from 'src/app/services/citas/citas.service';
-import { StorageService } from '../storage.service';
+import { StorageService } from '../../../services/firebase/storage.service';
 //ventanas emegentes
 import Swal from 'sweetalert2';
 

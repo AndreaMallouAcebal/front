@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Patrocinador } from 'src/app/models/patrocinador/patrocinador';
+import { StorageService } from 'src/app/services/firebase/storage.service';
 import { PatrocinadoresService } from 'src/app/services/patrocinadores/patrocinadores.service';
 //ventanas emegentes
 import Swal from 'sweetalert2';
@@ -15,10 +16,13 @@ export class RegistrarPatrocinadorComponent {
   patrocinador:Patrocinador=new Patrocinador();
   public patrocinadoresForm: FormGroup;
 
+
   constructor(
     private router: Router,
     public fb: FormBuilder,
-    public patrocinadoresService : PatrocinadoresService
+    public patrocinadoresService : PatrocinadoresService,
+        // imagenes firebase
+        private storageService: StorageService
   ) { }
   ngOnInit() {
 
@@ -46,4 +50,23 @@ export class RegistrarPatrocinadorComponent {
     this.guardarPatrocinador();
   }
 
+  imagenes:any=[];
+  //*******************imagenes********/
+  uploadImage(event:any){
+     const file=event.target.files[0];
+     console.log(file);
+    let reader= new FileReader();
+    reader.readAsDataURL(file)
+
+    reader.onloadend=()=>{
+      console.log(reader.result);
+      this.imagenes.push(reader.result);
+      this.storageService.subirImagen(file.nombre +'_' + Date.now() , reader.result).then(urlImagen=>{
+        console.log(urlImagen)
+       this.patrocinador.imagen=""+urlImagen
+       console.log(this.patrocinador.imagen)
+      })
+    }
+
+  }
 }

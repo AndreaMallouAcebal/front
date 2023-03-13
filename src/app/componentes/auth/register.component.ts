@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NuevoUsuario } from 'src/app/models/login/nuevo-usuario';
 import { AuthService } from 'src/app/services/seguridad/auth.service';
@@ -22,17 +23,28 @@ export class RegisterComponent implements OnInit {
   rol : string;
   dni : string;
   errMsg : string;
+  public registerForm: FormGroup;
 
    constructor (
     private tokenService: TokenService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    public fb: FormBuilder,
    ){}
 
   ngOnInit(): void {
     if (this.tokenService.getToken()) {
       this.isLogged=true;
     }
+
+     //formulario reactivo
+     this.registerForm = this.fb.group({
+      nombre: new FormControl('', [Validators.required]),
+      apellidos: new FormControl('', [Validators.required]),
+      dni: new FormControl('', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]),
+      userEmail: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    });
   }
 
   onRegister(): void {

@@ -13,19 +13,11 @@
         <li class="nav-item">
           <a class="nav-link" href="actividades">Actividades</a>
         </li>
-
+        <li class="nav-item">
+        <a class="nav-link" routerLink="/usuarios">Usuarios</a>
+      </li>
         <li class="nav-item">
           <a class="nav-link" href="contacto">Contacto</a>
-        </li>
-        <li class="dropdown" *ngIf="isAdmin">
-          <button class="btn btn-secondary dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"
-            data-bs-toggle="dropdown">
-            Editar
-          </button>
-          <div class="dropdown-menu sm-menu" data-bs-toggle="dropdown">
-            <a class="dropdown-item" routerLink="/patrocinadores">Patrocinadores</a>
-            <a class="dropdown-item" routerLink="/usuarios">Usuarios</a>
-          </div>
         </li>
       </ul>
       <ul>
